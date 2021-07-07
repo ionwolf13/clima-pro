@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.app-comp{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.nav-comp{
+  grid-column: 1/6;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  justify-self: center;
+}
+
+.nav-sec{
+  display: inline;
+}
+
+.main-comp{
+  grid-column: 1/6;
+  grid-row: 2/5;
+}
