@@ -1,12 +1,15 @@
 import React from 'react';
+import { MainCardComponent } from './MainCardComponent.js'; 
+import { CardComponent } from './CardComponent.js';
+import { ExtraCardComponent } from './ExtraCardComponent.js';
 
 export const MainComponent = () => {
 
     return(
         <div className='main-comp'>
-            <p>
-                main section
-            </p>
+            <MainCardComponent />
+            <ExtraCardComponent />
+            <CardComponent />
         </div>
     )
 }

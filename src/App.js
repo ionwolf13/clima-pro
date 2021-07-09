@@ -1,13 +1,17 @@
 import './App.css';
-import {MainComponent} from './components/MainComponent.js';
-import {NavComponent} from './components/NavComponent.js';
+import { MainComponent } from './components/MainComponent.js';
+import { NavComponent } from './components/NavComponent.js';
+import { LogoComponent } from './components/LogoComponent.js';
 
 function App() {
   return (
     <div className="app-comp">
-      <h1>Proj Clima</h1>
+      <LogoComponent />
       <NavComponent />
       <MainComponent />
+      <footer id='main-footer'>
+        Copyright © 2021 Unravel | Designed & Built by Jesus Israel Garcia
+      </footer>
     </div>
   );
 }
