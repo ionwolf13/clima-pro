@@ -38,12 +38,21 @@
 }
 
 .app-comp{
+  background: url(./pictures/gradient-2.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: auto;
   justify-content: center;
   align-items: center;
   align-content: center;
+  color: white;
+  max-height: max-content;
 }
 
 /* ##### Heading Section ##### */
@@ -52,14 +61,22 @@
   grid-row: 1;
   justify-self: center;
   align-self: center;
+  margin-top: 50px;
+  margin-left: 100px;
 }
 
 .nav-comp{
-  grid-column: 2/6;
+  margin-top: 50px;
+  margin-left: 20px;
+  grid-column: 1/6;
   grid-row: 1/2;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   justify-self: center;
+  border: 2px solid red;
+  padding: 10px 20px;
+  border-radius: 25px;
+  width: 900px;
 }
 
 .nav-sec{
@@ -76,27 +93,61 @@
   grid-template-rows: auto;
   align-self: center;
   justify-self: center;
-  column-gap: 25px;
+  column-gap: 10px;
 }
 
 .card-comp{
   align-self: center;
   justify-self: center;
+  border-color: red;
+  border: 2px solid red;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin-top: 20px;
+  background-color: lightgray;
+  color: black;
 }
 #main-card-comp{
  grid-column: 1/4;
  grid-row: 1;
- 
+ width: 300px;
+ height: 200px;
+ margin-right: 50px;
 }
 
 #sub-card-comp{
  grid-column: 1/6;
  grid-row: 2;
+ height: 300PX;
+ width: 500PX;
+ margin-top: 25px;
+ margin-left: 50%;
+ margin-right: 50%;
+ display: grid;
+ grid-template-columns: 20% 20% 20% 20% 20%; 
+ grid-template-rows: auto;
 }
 
 #extra-card-comp{
   grid-column: 4/6;
   grid-row: 1;
+  width: 200px;
+ height: 200px;
+}
+
+#sub-title{
+  grid-column: 1/6;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+#mini-card{
+  display: inline;
+  grid-row: 2;
+  height: 200px;
+  width: 50px;
+  margin-bottom: 20px;
 }
 
 /* ##### Footer Section  #####*/

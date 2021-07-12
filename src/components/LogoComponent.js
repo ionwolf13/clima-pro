@@ -5,7 +5,7 @@ export const LogoComponent = () => {
 
     return(
         <div id='logo-comp'>
-            <img src={logo} height='100'/>
+            <img src={logo} alt='weather app logo' height='100'/>
         </div>
     )
 }
