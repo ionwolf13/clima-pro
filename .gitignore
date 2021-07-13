@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+#weatherbit
 # production
 /build
 # /script.js

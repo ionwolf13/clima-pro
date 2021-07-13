@@ -38,7 +38,7 @@
 }
 
 .app-comp{
-  background: url(./pictures/gradient-1.jpg) no-repeat center center;
+  background: url(./pictures/gradient-1.jpg) no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -67,15 +67,17 @@
 
 .nav-comp{
   margin-top: 50px;
+  margin-left: 50%;
+  margin-right: 50%;
   grid-column: 1/6;
   grid-row: 1/2;
   display: grid;
-  grid-template-columns: 30% 20% 25% 25%;
+  grid-template-columns: 30% 25% 25% 20%;
   justify-self: center;
   border: 2px solid white;
   padding: 10px 20px;
   border-radius: 25px;
-  width: 1000px;
+  width: 50%;
   background: linear-gradient(45deg,#cfd6e6,#e7eff9 );
 }
 
@@ -114,13 +116,13 @@
  grid-row: 1;
  width: 300px;
  height: 200px;
- margin-right: 50px;
+ margin-right: 60px;
 }
 
 #sub-card-comp{
  grid-column: 1/6;
  grid-row: 2;
- height: 300PX;
+ height: 325PX;
  width: 650PX;
  margin-top: 25px;
  margin-left: 50%;
@@ -134,7 +136,7 @@
   grid-column: 4/6;
   grid-row: 1;
   width: 200px;
- height: 200px;
+  height: 200px;
 }
 
 #sub-title{
@@ -142,6 +144,9 @@
   grid-row: 1;
   justify-self: center;
   align-self: center;
+  margin-left: 50%;
+  margin-right: 50%;
+  width: max-content;
 }
 
 #mini-card{
@@ -151,6 +156,7 @@
   width: 65px;
   margin-bottom: 20px;
   padding-bottom: 10px;
+  display: grid;
 }
 
 /* ##### Footer Section  #####*/
