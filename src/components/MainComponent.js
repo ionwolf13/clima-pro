@@ -5,6 +5,7 @@ import { ExtraCardComponent } from './ExtraCardComponent.js';
 
 export const MainComponent = () => {
 
+    
     return(
         <div className='main-comp'>
             <MainCardComponent />

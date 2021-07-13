@@ -38,7 +38,7 @@
 }
 
 .app-comp{
-  background: url(./pictures/gradient-2.jpg) no-repeat center center;
+  background: url(./pictures/gradient-1.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -51,7 +51,7 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  color: white;
+  color: black;
   max-height: max-content;
 }
 
@@ -67,20 +67,22 @@
 
 .nav-comp{
   margin-top: 50px;
-  margin-left: 20px;
   grid-column: 1/6;
   grid-row: 1/2;
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 30% 20% 25% 25%;
   justify-self: center;
-  border: 2px solid red;
+  border: 2px solid white;
   padding: 10px 20px;
   border-radius: 25px;
-  width: 900px;
+  width: 1000px;
+  background: linear-gradient(45deg,#cfd6e6,#e7eff9 );
 }
 
 .nav-sec{
-  display: inline;
+  display: inline-block;
+  align-self: center;
+  justify-self: center;
 }
 
 /* ##### Body Section ##### */
@@ -100,12 +102,12 @@
   align-self: center;
   justify-self: center;
   border-color: red;
-  border: 2px solid red;
+  border: 2px solid rgb(194, 194, 194);
   padding: 10px 20px;
   border-radius: 25px;
   margin-top: 20px;
-  background-color: lightgray;
   color: black;
+  background: linear-gradient(45deg,#cfd6e6,#e7eff9 );
 }
 #main-card-comp{
  grid-column: 1/4;
@@ -119,10 +121,10 @@
  grid-column: 1/6;
  grid-row: 2;
  height: 300PX;
- width: 500PX;
+ width: 650PX;
  margin-top: 25px;
  margin-left: 50%;
- margin-right: 50%;
+ margin-right: 55%;
  display: grid;
  grid-template-columns: 20% 20% 20% 20% 20%; 
  grid-template-rows: auto;
@@ -146,8 +148,9 @@
   display: inline;
   grid-row: 2;
   height: 200px;
-  width: 50px;
+  width: 65px;
   margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 /* ##### Footer Section  #####*/

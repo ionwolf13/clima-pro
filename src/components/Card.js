@@ -4,7 +4,7 @@ export const Card = () => {
 
     return(
         <div className='card-comp' id='mini-card'>
-            <p>hi</p>
+            <p>Monday</p>
         </div>
     )
 }
