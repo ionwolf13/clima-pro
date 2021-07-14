@@ -7,7 +7,7 @@ export const MainCardComponent = ({currentLocation}) => {
     return(
         <div className='card-comp' id='main-card-comp'>
             <h1 className='main-card-detail'>{dayName}</h1>   
-            <h2></h2>     
-            </div>
+                 
+        </div>
     )
 }

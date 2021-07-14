@@ -62,7 +62,7 @@
   justify-self: center;
   align-self: center;
   margin-top: 50px;
-  margin-left: 100px;
+  margin-left: 300px;
 }
 
 .nav-comp{
@@ -72,19 +72,23 @@
   grid-column: 1/6;
   grid-row: 1/2;
   display: grid;
-  grid-template-columns: 30% 25% 25% 20%;
+  grid-template-columns: 30% 35% 20% 15%;
   justify-self: center;
   border: 2px solid white;
   padding: 10px 20px;
   border-radius: 25px;
   width: 50%;
-  background: linear-gradient(45deg,#cfd6e6,#e7eff9 );
+  background: linear-gradient(45deg,#c2c2c2,#b4d4fc );
 }
 
 .nav-sec{
   display: inline-block;
   align-self: center;
   justify-self: center;
+}
+
+#search-text-area{
+  margin-top: 25px;
 }
 
 /* ##### Body Section ##### */

@@ -12,14 +12,13 @@ export const CardComponent = () => {
                 setDays.push(days[new Date().getDay() + m])
             }
             else{
-                let m = 1
+                m = 1
                 setDays.push(days[new Date().getDay() - days.indexOf(days[new Date().getDay()])])
             }
             m++
         }
     }
     getSetDays();
-    console.log(setDays)
     
     return(
         <div className='card-comp' id='sub-card-comp'>
