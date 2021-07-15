@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './Card.js';
 
-export const CardComponent = () => {
+export const CardComponent = ({currentLocation}) => {
 
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let setDays = [];
@@ -23,7 +23,7 @@ export const CardComponent = () => {
     return(
         <div className='card-comp' id='sub-card-comp'>
             <h3 id='sub-title'>Upcoming Forecast</h3>
-            {setDays.map(day => <Card nextDay={day}/>)}
+            {setDays.map(day => <Card nextDay={day} currentLocation={currentLocation}/>)}
         </div>
     )
 }

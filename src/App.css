@@ -61,8 +61,6 @@
   grid-row: 1;
   justify-self: center;
   align-self: center;
-  margin-top: 50px;
-  margin-left: 300px;
 }
 
 .nav-comp{
@@ -72,7 +70,7 @@
   grid-column: 1/6;
   grid-row: 1/2;
   display: grid;
-  grid-template-columns: 30% 35% 20% 15%;
+  grid-template-columns: 20% 35% 25% 20%;
   justify-self: center;
   border: 2px solid white;
   padding: 10px 20px;
@@ -85,6 +83,11 @@
   display: inline-block;
   align-self: center;
   justify-self: center;
+}
+
+#nav-temp-sec{
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
 
 #search-text-area{
@@ -126,7 +129,7 @@
 #sub-card-comp{
  grid-column: 1/6;
  grid-row: 2;
- height: 325PX;
+ height: 375PX;
  width: 650PX;
  margin-top: 25px;
  margin-left: 50%;
@@ -148,6 +151,7 @@
   grid-row: 1;
   justify-self: center;
   align-self: center;
+  margin-top: -2px;
   margin-left: 50%;
   margin-right: 50%;
   width: max-content;
@@ -156,11 +160,21 @@
 #mini-card{
   display: inline;
   grid-row: 2;
-  height: 200px;
-  width: 65px;
+  height: 300px;
+  width: 70px;
+  margin-top: -5px;
   margin-bottom: 20px;
-  padding-bottom: 10px;
   display: grid;
+  grid-column: 100%;
+  padding-bottom: 10px;
+  align-content: center;
+  justify-content: center;
+}
+#mini-card-detail{
+  align-self: center;
+  justify-self: center; 
+  margin-left: 50%;
+  margin-right: 50%;
 }
 
 /* ##### Footer Section  #####*/
