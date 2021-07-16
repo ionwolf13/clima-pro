@@ -15,11 +15,8 @@ function App() {
     longitude: "",
     latitude: "",
     currentDay: {}, 
-    forecastDay1: {}, 
-    forecastDay2: {},
-    forecastDay3: {},
-    forecastDay4: {},
-    forecastDay5: {}
+    currentIcon: "",
+    forecastDays: []
   })
 
 

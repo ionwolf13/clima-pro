@@ -1,6 +1,10 @@
 import React from 'react';
 import searchIcon from '../pictures/searchIcon-1.png';
 import { LogoComponent } from './LogoComponent.js';
+import statLat from '../pictures/statLat.png';
+import statLon from '../pictures/statLon.png';
+import statF from '../pictures/statFarenheit.png';
+import statC from '../pictures/statCelsius.png';
 
 
 export const NavComponent = ({currentLocation, setCurrentLocation}) => {
@@ -12,7 +16,7 @@ export const NavComponent = ({currentLocation, setCurrentLocation}) => {
         fetch(url.replace('{city}', e.target.enterCity.value))
         .then(res => res.json())
         .then(data => setCurrentLocation({
-            currentDegree: 'C°',
+            currentDegree: statC,
             city: data.city_name,
             state: data.state_code,
             country: data.country_code,
@@ -30,7 +34,7 @@ export const NavComponent = ({currentLocation, setCurrentLocation}) => {
 
     const changeDegrees = (e) => {
         e.preventDefault();
-        (currentLocation.currentDegree === 'C°')? setCurrentLocation({...currentLocation,currentDegree: 'F°'}): setCurrentLocation({...currentLocation,currentDegree: 'C°'})
+        (currentLocation.currentDegree === statC)? setCurrentLocation({...currentLocation,currentDegree: statF}): setCurrentLocation({...currentLocation,currentDegree: statC})
         
     }
 
@@ -45,15 +49,16 @@ export const NavComponent = ({currentLocation, setCurrentLocation}) => {
                     <input id='search-text-area' name='enterCity' type='textfield' placeholder='Search'/>
                     <button id='search-submit-button' type='submit' value='submit'><img src={searchIcon} alt='search icon' height='10'/></button>
                 </form>
-                <h4>{date}<br></br> Last Update: {time} </h4>
+                <h3>{date}<br></br> Last Update: {time} </h3>
             </div>
             <div className='nav-sec'>
-                <h3>Current City:</h3>
-                <h2> {currentLocation.city}, {currentLocation.state}, {currentLocation.country} <br></br> {currentLocation.timezone}</h2>   
+                <h2>Location:</h2>
+                <h3> {currentLocation.city}, {currentLocation.state}, {currentLocation.country} <br></br> {currentLocation.timezone}</h3>   
             </div>
             <div className='nav-sec'>
-                <img id='nav-temp-pic' src={`http://openweathermap.org/img/wn/${currentLocation.currentIcon}.png`} alt='weather icon' height='75'/>
-                <h3 id='nav-temp-sec'>{currentLocation.currentDay.temp} <span onClick={(e) => changeDegrees(e)} > {currentLocation.currentDegree} </span></h3>
+                <h2><span > <img onClick={(e) => changeDegrees(e)}  src={currentLocation.currentDegree} alt='icon' height='25'/> </span></h2>
+                <h4><img src={statLon} alt='icon' height='25'/> {currentLocation.longitude}°</h4>
+                <h4><img src={statLat} alt='icon' height='25'/>{currentLocation.latitude}°</h4>
             </div>         
         </div>
     )

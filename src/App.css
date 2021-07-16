@@ -66,7 +66,7 @@
 .nav-comp{
   margin-top: 50px;
   margin-left: 50%;
-  margin-right: 50%;
+  margin-right: 49%;
   grid-column: 1/6;
   grid-row: 1/2;
   display: grid;
@@ -75,7 +75,7 @@
   border: 2px solid white;
   padding: 10px 20px;
   border-radius: 25px;
-  width: 50%;
+  width: 55%;
   background: linear-gradient(45deg,#c2c2c2,#b4d4fc );
 }
 
@@ -119,11 +119,20 @@
   background: linear-gradient(45deg,#cfd6e6,#e7eff9 );
 }
 #main-card-comp{
- grid-column: 1/4;
+ grid-column: 1/6;
  grid-row: 1;
- width: 300px;
+ display: grid;
+ grid-template-columns: 20% 20% 20% 20% 20%;
+ grid-template-rows: auto;
+ width: 650px;
  height: 200px;
- margin-right: 60px;
+ margin-right: 20px;
+}
+
+.main-card-details-1{
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
 }
 
 #sub-card-comp{
@@ -161,7 +170,7 @@
   display: inline;
   grid-row: 2;
   height: 300px;
-  width: 70px;
+  width: 80px;
   margin-top: -5px;
   margin-bottom: 20px;
   display: grid;
