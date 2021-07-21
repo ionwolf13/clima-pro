@@ -3,7 +3,7 @@ import { Card } from './Card.js';
 
 export const CardComponent = ({currentLocation}) => {
 
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let days = currentLocation.daysOfTheWeek;
     let setDays = [];
     const getSetDays = () => {
         let m = 1;
@@ -11,7 +11,7 @@ export const CardComponent = ({currentLocation}) => {
             if(days[new Date().getDay() + m]){
                 setDays.push(days[new Date().getDay() + m])
             }
-            else if(days[new Date().getDay() + m] == undefined){
+            else if(days[new Date().getDay() + m] === undefined){
                 m = 1
                 setDays.push(days[new Date().getDay() - days.indexOf(days[new Date().getDay()])])
                 console.log(days[new Date().getDay()])
@@ -28,7 +28,6 @@ export const CardComponent = ({currentLocation}) => {
             {setDays.map(day => 
                 <div>
                     <Card nextDay={day} currentLocation={currentLocation} counter={counter++}/>
-                    
                 </div>
             )}
         </div>
