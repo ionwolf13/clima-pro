@@ -18,7 +18,7 @@ export const MainCardComponent = ({currentLocation}) => {
 
     let today = new Date();
     let date = today.getFullYear() + '-' + (today.getMonth()+1)+'-'+today.getDate();
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let days = currentLocation.daysOfTheWeek;
     var dayName = days[new Date().getDay()];
     return(
         <div className='card-comp' id='main-card-comp'>

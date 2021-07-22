@@ -13,7 +13,69 @@ export const NavComponent = ({currentLocation, setCurrentLocation, day0, day1, d
         let url = 'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key=85836ebec12547febf0aa65cba777c57'
         fetch(url.replace('{city}', e.target.enterCity.value))
         .then(res => res.json())
-        .then(data => setCurrentLocation({
+        .then(data => {
+            console.log(data, "this be the data before the setting")
+            setDay0({ 
+                wind_spd: data.data[0].wind_spd,
+                wind_dir: data.data[0].wind_dir,
+                wind_cdir: data.data[0].wind_cdir,
+                wind_cdir_full: data.data[0].wind_cdir_full,
+                temp: data.data[0].temp,
+                max_temp:data.data[0].max_temp,
+                min_temp:data.data[0].min_temp,
+                pop:data.data[0].pop,
+                precip:data.data[0].precip,
+                snow:data.data[0].snow,
+                pres:data.data[0].pres,
+                dewpt:data.data[0].dewpt,
+                rh:data.data[0].rh,
+                weather: data.data[0].weather,
+                pod:data.data[0].pod,
+                clouds_low:data.data[0].clouds_low,
+                clouds_mid:data.data[0].clouds_mid,
+                clouds_hi:data.data[0].clouds_hi,
+                clouds:data.data[0].clouds,
+                vis:data.data[0].vis,
+                max_dhi:data.data[0].max_dhi,
+                uv:data.data[0].uv,
+                moon_phase:data.data[0].moon_phase,
+                moon_phase_lunation:data.data[0].moon_phase_lunation,
+                moonrise_ts:data.data[0].moonrise_ts,
+                moonset_ts:data.data[0].moonset_ts,
+                sunrise_ts:data.data[0].sunrise_ts,
+                sunset_ts: data.data[0].sunset_ts
+            })
+            setDay1({
+                max_temp: data.data[1].max_temp,
+                min_temp: data.data[1].min_temp,
+                pop: data.data[1].pop,
+                weather: data.data[1].weather
+              })
+              setDay2({
+                max_temp: data.data[2].max_temp,
+                min_temp: data.data[2].min_temp,
+                pop: data.data[2].pop,
+                weather: data.data[2].weather
+              })
+              setDay3({
+                max_temp: data.data[3].max_temp,
+                min_temp: data.data[3].min_temp,
+                pop: data.data[3].pop,
+                weather: data.data[3].weather
+              })
+              setDay4({
+                max_temp: data.data[4].max_temp,
+                min_temp: data.data[4].min_temp,
+                pop: data.data[4].pop,
+                weather: data.data[4].weather
+              })
+              setDay5({
+                max_temp: data.data[5].max_temp,
+                min_temp: data.data[5].min_temp,
+                pop: data.data[5].pop,
+                weather: data.data[5].weather
+              })
+            setCurrentLocation({
                 currentDegree: statC,
                 city: data.city_name,
                 state: data.state_code,
@@ -21,56 +83,55 @@ export const NavComponent = ({currentLocation, setCurrentLocation, day0, day1, d
                 timezone: data.timezone,
                 longitude: data.lon,
                 latitude: data.lat,
-                currentDay: data.data[0],
+                daysOfTheWeek: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
                 currentIcon: data.data[0].weather.icon.substring(1),
-                forecastDays: data.data,
-                foreCastDays: {},
-            })
-            
-        )
-        
+                currentDay: day0,
+                weather1: day1,
+                weather2: day2,
+                weather3: day3,
+                weather4: day4,
+                weather5: day5,
+            })            
+        })
+        console.log(currentLocation, "this be the fetch")
         e.target.reset()
     }
 
     function celsius2F(celsius) {
-        console.log(celsius)
         let farenheit = celsius * (1.8) + 32
-        console.log(farenheit)
         return farenheit
      }
      function farenheit2C(farenheit){
-        console.log(farenheit)  
         let celsius =  (farenheit - 32)/(1.8)
-        console.log(celsius)
         return celsius
      }
-    
+
      function updateTemp() {
          let n = 0
-         console.log(n)
          if(currentLocation.currentDegree === statC){
              n = celsius2F(currentLocation.currentDay.temp)
-             setCurrentLocation({...currentLocation})
+             setDay0({...day0,temp: n})
+             setCurrentLocation({...currentLocation, currentDay: day0})
              console.log(n,"new degree in farenheit")
          }
          else if(currentLocation.currentDegree === statF){
              n = farenheit2C(currentLocation.currentDay.temp)
+             setDay0({...day0,temp: n})
+             setCurrentLocation({...currentLocation, currentDay: day0})
              console.log(n,"new degree in celsius")
-             
          }
          return n
      }
 
     const changeDegrees = (e) => {
         e.preventDefault();
-         
+        updateTemp()
         if(currentLocation.currentDegree === statC){
             setCurrentLocation({...currentLocation,currentDegree: statF})
-            updateTemp()
         }
         else if(currentLocation.currentDegree === statF){
             setCurrentLocation({...currentLocation,currentDegree: statC})
-            updateTemp()
+            
         }
         
               

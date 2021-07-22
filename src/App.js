@@ -11,7 +11,7 @@ function App() {
     wind_dir: 0,
     wind_cdir:"",
     wind_cdir_full:"",
-    temp:0,
+    temp: 100,
     max_temp:0,
     min_temp:0,
     pop:0,
@@ -20,7 +20,9 @@ function App() {
     pres:0,
     dewpt:0,
     rh:0,
-    weather: {},
+    weather: {"icon":"c04d",
+              "code":"804",
+              "description":"Overcast clouds"},
     pod:"",
     clouds_low:0,
     clouds_mid:0,
@@ -40,31 +42,41 @@ function App() {
     max_temp:0,
     min_temp:0,
     pop:0,
-    weather: {}
+    weather: {"icon":"c04d",
+              "code":"804",
+              "description":"Overcast clouds"}
   })
   const[day2, setDay2] = useState({
     max_temp:0,
     min_temp:0,
     pop:0,
-    weather: {}
+    weather: {"icon":"c04d",
+              "code":"804",
+              "description":"Overcast clouds"}
   })
   const[day3, setDay3] = useState({
     max_temp:0,
     min_temp:0,
     pop:0,
-    weather: {}
+    weather: {"icon":"c04d",
+              "code":"804",
+              "description":"Overcast clouds"}
   })
   const[day4, setDay4] = useState({
     max_temp:0,
     min_temp:0,
     pop:0,
-    weather: {}
+    weather: {"icon":"c04d",
+              "code":"804",
+              "description":"Overcast clouds"}
   })
   const[day5, setDay5] = useState({
     max_temp:0,
     min_temp:0,
     pop:0,
-    weather: {}
+    weather: {"icon":"c04d",
+              "code":"804",
+              "description":"Overcast clouds"}
   })
 
   const [currentLocation, setCurrentLocation] = useState({
@@ -77,21 +89,18 @@ function App() {
     latitude: "",
     currentIcon: "",
     daysOfTheWeek: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    weather0: day0,
+    currentDay: day0,
     weather1: day1,
     weather2: day2,
     weather3: day3,
     weather4: day4,
     weather5: day5
   })
-  
-  console.log(currentLocation)
-
 
   return (
     <div className="app-comp">
       <NavComponent currentLocation={currentLocation} setCurrentLocation={setCurrentLocation} day0={day0} day1={day1} day2={day2} day3={day3} day4={day4} day5={day5} setDay0={setDay0} setDay1={setDay1} setDay2={setDay2} setDay3={setDay3} setDay4={setDay4} setDay5={setDay5}/>
-      <MainComponent currentLocation={currentLocation} setDay0={setDay0} setDay1={setDay1} setDay2={setDay2} setDay3={setDay3} setDay4={setDay4} setDay5={setDay5} day0={day0} day1={day1} day2={day2} day3={day3} day4={day4} day5={day5}/>
+      <MainComponent currentLocation={currentLocation} setDay0={setDay0} day0={day0} day1={day1} day2={day2} day3={day3} day4={day4} day5={day5} setDay1={setDay1} setDay2={setDay2} setDay3={setDay3} setDay4={setDay4} setDay5={setDay5}/>
       <footer id='main-footer'>
         Copyright © 2021 Unravel | Designed & Built by Jesus Israel Garcia
       </footer>

@@ -7,21 +7,20 @@ export const CardComponent = ({currentLocation}) => {
     let setDays = [];
     const getSetDays = () => {
         let m = 1;
+        let extraDays = 0
         for(let i = 3; i < 8; i++){
-            if(days[new Date().getDay() + m]){
-                setDays.push(days[new Date().getDay() + m])
+            if(days[new Date().getDay() + m] === undefined){
+                setDays.push(days[new Date().getDay() - days.indexOf(days[new Date().getDay()]) + extraDays ])
+                extraDays++
             }
-            else if(days[new Date().getDay() + m] === undefined){
-                m = 1
-                setDays.push(days[new Date().getDay() - days.indexOf(days[new Date().getDay()])])
-                console.log(days[new Date().getDay()])
-                console.log(days.indexOf(days[new Date().getDay()]))
+            else if(days[new Date().getDay() + m]){
+                setDays.push(days[new Date().getDay() + m])
             }
             m++
         }
     }
     getSetDays();
-    let counter = 0;
+    let counter = 1;
     return(
         <div className='card-comp' id='sub-card-comp'>
             <h3 id='sub-title'>Upcoming Forecast</h3>
