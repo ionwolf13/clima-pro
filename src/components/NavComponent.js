@@ -111,13 +111,13 @@ export const NavComponent = ({currentLocation, setCurrentLocation, day0, day1, d
          if(currentLocation.currentDegree === statC){
              n = celsius2F(currentLocation.currentDay.temp)
              setDay0({...day0,temp: n})
-             setCurrentLocation({...currentLocation, currentDay: day0})
+             
              console.log(n,"new degree in farenheit")
          }
          else if(currentLocation.currentDegree === statF){
              n = farenheit2C(currentLocation.currentDay.temp)
              setDay0({...day0,temp: n})
-             setCurrentLocation({...currentLocation, currentDay: day0})
+             
              console.log(n,"new degree in celsius")
          }
          return n

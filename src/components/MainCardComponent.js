@@ -20,6 +20,17 @@ export const MainCardComponent = ({currentLocation}) => {
     let date = today.getFullYear() + '-' + (today.getMonth()+1)+'-'+today.getDate();
     let days = currentLocation.daysOfTheWeek;
     var dayName = days[new Date().getDay()];
+
+    function turnTime(UNIX_timestamp) {
+        let a = new Date(UNIX_timestamp * 1000);  
+        let hour = a.getHours();
+        let min = a.getMinutes();
+        let time = hour + ':' + min;
+        return time
+    }
+    let sunrise = turnTime(currentLocation.currentDay.sunrise_ts);
+    let sunset = turnTime(currentLocation.currentDay.sunset_ts);
+    
     return(
         <div className='card-comp' id='main-card-comp'>
             <div className='main-card-details-1'>
@@ -30,35 +41,35 @@ export const MainCardComponent = ({currentLocation}) => {
                 <img id='nav-temp-pic' src={`http://openweathermap.org/img/wn/${currentLocation.currentIcon}.png`} alt='weather icon' height='105'/>
             </div>
             <div className='main-card-details-1'>
-                <h2 className='detail-2'> {currentLocation.currentDay.temp} <img src={currentLocation.currentDegree} alt='icon' height='25'/></h2>
+                <h2 className='detail-2'> {currentLocation.currentDay.temp} <img src={currentLocation.currentDegree} alt='icon' height='20'/></h2>
             </div>
             <div className='main-card-details-1'>
-                <p><img src={statRain} alt='icon' height='25'/>{currentLocation.currentDay.pop}%</p>
-                <p><img src={statVisibility} alt='icon' height='25'/>{currentLocation.currentDay.vis}km</p>
+                <p><img src={statRain} alt='icon' height='20'/> {currentLocation.currentDay.pop}%</p>
+                <p><img src={statVisibility} alt='icon' height='20'/> {currentLocation.currentDay.vis}km</p>
             </div>
             <div className='main-card-details-1'>
-                <p> <img src={statHighTemp} alt='icon' height='25'/>{currentLocation.currentDay.max_temp}</p>
-                <p> <img src={statLowTemp} alt='icon' height='25'/>{currentLocation.currentDay.min_temp}</p>
+                <p> <img src={statHighTemp} alt='icon' height='20'/> {currentLocation.currentDay.max_temp}</p>
+                <p> <img src={statLowTemp} alt='icon' height='20'/> {currentLocation.currentDay.min_temp}</p>
             </div>
             <div className='main-card-details-1'>
-                <p><img src={statPressure} alt='icon' height='25'/>{currentLocation.currentDay.pres}</p>
-                <p><img src={statHumidity} alt='icon' height='25'/>{currentLocation.currentDay.rh}%</p>
+                <p><img src={statPressure} alt='icon' height='20'/> {currentLocation.currentDay.pres} mb</p>
+                <p><img src={statHumidity} alt='icon' height='20'/> {currentLocation.currentDay.rh} %</p>
             </div>
             <div className='main-card-details-1'>
-                <p><img src={statClouds} alt='icon' height='25'/>{currentLocation.currentDay.clouds}%</p>    
-                <p><img src={statSnow} alt='icon' height='25'/>{currentLocation.currentDay.snow}mm</p>
+                <p><img src={statClouds} alt='icon' height='20'/> {currentLocation.currentDay.clouds} %</p>    
+                <p><img src={statSnow} alt='icon' height='20'/> {currentLocation.currentDay.snow} mm</p>
             </div>
             <div className='main-card-details-1'>
-                <p><img src={statSunrise} alt='icon' height='25'/>sunrise</p>
-                <p><img src={statSunset} alt='icon' height='25'/>sunset</p>      
+                <p><img src={statSunrise} alt='icon' height='20'/>{sunrise} am</p>
+                <p><img src={statSunset} alt='icon' height='20'/>{sunset} pm</p>      
             </div>
             <div className='main-card-details-1'>
-            <p><img src={statWindDirection} alt='icon' height='25'/>{currentLocation.currentDay.wind_cdir}</p>
-                <p><img src={statWind} alt='icon' height='25'/>{currentLocation.currentDay.wind_spd}</p>
+            <p><img src={statWindDirection} alt='icon' height='20'/> {currentLocation.currentDay.wind_cdir} °</p>
+                <p><img src={statWind} alt='icon' height='20'/> {currentLocation.currentDay.wind_spd} m/s</p>
             </div>
             <div className='main-card-details-1'>
-                <p><img src={statUV} alt='icon' height='25'/>{currentLocation.currentDay.uv}</p>
-                <p><img src={Moon} alt='icon' height='25'/>full moon</p>
+                <p><img src={statUV} alt='icon' height='20'/> {currentLocation.currentDay.uv}</p>
+                <p><img src={Moon} alt='icon' height='20'/>full moon</p>
             </div>
             
         </div>
