@@ -10,7 +10,7 @@ export const NavComponent = ({currentLocation, setCurrentLocation, day0, day1, d
     
     const getData = (e) => {
         e.preventDefault()
-        let url = 'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key=85836ebec12547febf0aa65cba777c57'
+        let url = `https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key=${process.env.REACT_APP_API_KEY}`
         fetch(url.replace('{city}', e.target.enterCity.value))
         .then(res => res.json())
         .then(data => {

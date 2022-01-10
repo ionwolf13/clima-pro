@@ -2,7 +2,6 @@ import './App.css';
 import { MainComponent } from './components/MainComponent.js';
 import { NavComponent } from './components/NavComponent.js';
 import { useState } from 'react';
-// import weatherObj from './components/script';
 
 function App() {
 
