@@ -1,11 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { FooterCont } from "./components2/Footer/FooterCont.jsx";
-import { Header } from "./components2/Header/HeaderCont.jsx";
-import { NavCont } from "./components2/NavCont/NavCont.jsx";
-import ForecastCont from "./components2/ForecastCont/ForecastCont";
-import MainCard from "./components2/MainCard/MainCard";
+import { FooterCont } from "./components/Footer/Footer.jsx";
+import { Header } from "./components/Header/Header.jsx";
+import { NavCont } from "./components/NavCont/NavCont.jsx";
+import ForecastCont from "./components/ForecastCont/ForecastCont";
+import MainCard from "./components/MainCard/MainCard";
 import statCelsius from "./pictures/statCelsius.png";
+import { useLocationStore } from "./state";
 import axios from "axios";
 
 function App() {
@@ -23,6 +24,11 @@ function App() {
     degree: "Celsius",
     degreePic: statCelsius,
   });
+
+  const searchedLocation = useLocationStore((state) => state.location);
+  const updateSearchedLocation = useLocationStore(
+    (state) => state.updateLocation
+  );
 
   const weekDays = [
     "Sunday",
@@ -88,12 +94,19 @@ function App() {
   }, [location]);
 
   return (
-    <div className="app-comp">
+    <div className="app-container">
       <Header />
       <NavCont
         clock={clock}
         todaysDate={todaysDate}
         setLocation={setLocation}
+      />
+      <input
+        value={searchedLocation}
+        onChange={(e) => {
+          console.log(e.target.value);
+          updateSearchedLocation(e.target.value);
+        }}
       />
       {location === "none" ? null : (
         <>

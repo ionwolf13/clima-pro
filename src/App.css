@@ -37,7 +37,7 @@
   }
 }
 
-.app-comp {
+.app-container {
   background: url(./pictures/4seasons.jpg) no-repeat center fixed;
   background-size: contain;
   -webkit-background-size: cover;
@@ -47,9 +47,9 @@
   overflow: hidden;
   background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   row-gap: 25px;
-  max-height: max-content;
+  height: 100vh;
 }
