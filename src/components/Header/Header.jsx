@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
-import weatherLogo from "../../pictures/weatherlogo.png";
-import menuLines from "../../pictures/menuLines.png";
+import weatherLogo from "../../images/weatherlogo.png";
+import menuLines from "../../images/menuLines.png";
 
 export const Header = () => {
   const onClickMenuButton = (e) => {
