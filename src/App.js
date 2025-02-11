@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { FooterCont } from "./components/Footer/Footer.jsx";
-import { Header } from "./components/Header/Header.jsx";
+import { Header } from "./components/Header/Header.tsx";
 import { NavCont } from "./components/NavCont/NavCont.jsx";
 import ForecastCont from "./components/ForecastCont/ForecastCont";
 import MainCard from "./components/MainCard/MainCard";

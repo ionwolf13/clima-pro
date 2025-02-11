@@ -1,10 +1,10 @@
 import "./Footer.css";
-import facebook from "./images/facebookwhite1.png";
-import instagram from "./images/instagramwhite.png";
-import linkedin from "./images/linkedinwhite.png";
-import pinterest from "./images/pinterestwhite.png";
-import twitter from "./images/twitterwhite.png";
-import youtube from "./images/youtubewhite.png";
+import facebook from "../../images/facebookwhite1.png";
+import instagram from "../../images/instagramwhite.png";
+import linkedin from "../../images/linkedinwhite.png";
+import pinterest from "../../images/pinterestwhite.png";
+import twitter from "../../images/twitterwhite.png";
+import youtube from "../../images/youtubewhite.png";
 
 export const FooterCont = () => {
   return (
