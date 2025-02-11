@@ -9,19 +9,3 @@
   justify-content: center;
   position: relative;
 }
-
-.menu-button {
-  height: 24px;
-  width: 24px;
-  position: absolute;
-  left: 8vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-
-#menu-button-icon {
-  height: 16px;
-  width: 16px;
-}

@@ -18,10 +18,10 @@ import statVisibility from "../../images/statVisibility.png";
 import statWind from "../../images/statWind.png";
 import statWindDirection from "../../images/statWindDirection.png";
 import { MiniCard } from "./MiniCard";
-import springSeason from "./images/springSeason.png";
-import summerSeason from "./images/summerSeason.png";
-import fallSeason from "./images/fallSeason.png";
-import winterSeason from "./images/winterSeason.png";
+import springSeason from "../../images/springSeason.png";
+import summerSeason from "../../images/summerSeason.png";
+import fallSeason from "../../images/fallSeason.png";
+import winterSeason from "../../images/winterSeason.png";
 
 const MainCard = ({
   locationData,
