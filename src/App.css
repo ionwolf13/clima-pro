@@ -38,7 +38,7 @@
 }
 
 .app-container {
-  background: url(./pictures/4seasons.jpg) no-repeat center fixed;
+  background: url("./images/4seasons.jpg") no-repeat center fixed;
   background-size: contain;
   -webkit-background-size: cover;
   -moz-background-size: cover;

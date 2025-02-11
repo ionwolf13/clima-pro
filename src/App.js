@@ -5,7 +5,7 @@ import { Header } from "./components/Header/Header.jsx";
 import { NavCont } from "./components/NavCont/NavCont.jsx";
 import ForecastCont from "./components/ForecastCont/ForecastCont";
 import MainCard from "./components/MainCard/MainCard";
-import statCelsius from "./pictures/statCelsius.png";
+import statCelsius from "./images/statCelsius.png";
 import { useLocationStore } from "./state";
 import axios from "axios";
 
