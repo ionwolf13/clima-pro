@@ -37,159 +37,19 @@
   }
 }
 
-.app-comp{
-  background: url(./pictures/gradient-1.jpg) no-repeat center fixed;
+.app-comp {
+  background: url(./pictures/4seasons.jpg) no-repeat center fixed;
+  background-size: contain;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   overflow: hidden;
   background-repeat: no-repeat;
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: auto;
+  display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  color: black;
+  flex-direction: column;
+  row-gap: 25px;
   max-height: max-content;
-}
-
-/* ##### Heading Section ##### */
-#logo-comp{
-  grid-column: 1/2;
-  grid-row: 1;
-  justify-self: center;
-  align-self: center;
-}
-
-.nav-comp{
-  margin-top: 50px;
-  margin-left: 50%;
-  margin-right: 49%;
-  grid-column: 1/6;
-  grid-row: 1/2;
-  display: grid;
-  grid-template-columns: 20% 35% 25% 20%;
-  justify-self: center;
-  border: 2px solid white;
-  padding: 10px 20px;
-  border-radius: 25px;
-  width: 55%;
-  background: linear-gradient(45deg,#c2c2c2,#b4d4fc );
-}
-
-.nav-sec{
-  display: inline-block;
-  align-self: center;
-  justify-self: center;
-}
-
-#nav-temp-sec{
-  margin-left: 10px;
-  margin-bottom: 20px;
-}
-
-#search-text-area{
-  margin-top: 25px;
-}
-
-/* ##### Body Section ##### */
-.main-comp{
-  max-width: 500px;
-  grid-column: 1/6;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: auto;
-  align-self: center;
-  justify-self: center;
-  column-gap: 10px;
-}
-
-.card-comp{
-  align-self: center;
-  justify-self: center;
-  border-color: red;
-  border: 2px solid rgb(194, 194, 194);
-  padding: 10px 20px;
-  border-radius: 25px;
-  margin-top: 20px;
-  color: black;
-  background: linear-gradient(45deg,#cfd6e6,#e7eff9 );
-}
-#main-card-comp{
- grid-column: 1/6;
- grid-row: 1;
- display: grid;
- grid-template-columns: 20% 20% 20% 20% 20%;
- grid-template-rows: auto;
- width: 650px;
- height: 200px;
- margin-right: 20px;
-}
-
-.main-card-details-1{
-  display: inline-block;
-  align-content: center;
-  justify-content: center;
-}
-
-#sub-card-comp{
- grid-column: 1/6;
- grid-row: 2;
- height: 375PX;
- width: 650PX;
- margin-top: 25px;
- margin-left: 50%;
- margin-right: 55%;
- display: grid;
- grid-template-columns: 20% 20% 20% 20% 20%; 
- grid-template-rows: auto;
-}
-
-#extra-card-comp{
-  grid-column: 4/6;
-  grid-row: 1;
-  width: 200px;
-  height: 200px;
-}
-
-#sub-title{
-  grid-column: 1/6;
-  grid-row: 1;
-  justify-self: center;
-  align-self: center;
-  margin-top: -2px;
-  margin-left: 50%;
-  margin-right: 50%;
-  width: max-content;
-}
-
-#mini-card{
-  display: inline;
-  grid-row: 2;
-  height: 300px;
-  width: 80px;
-  margin-top: -5px;
-  margin-bottom: 20px;
-  display: grid;
-  grid-column: 100%;
-  padding-bottom: 10px;
-  align-content: center;
-  justify-content: center;
-}
-#mini-card-detail{
-  align-self: center;
-  justify-self: center; 
-  margin-left: 50%;
-  margin-right: 50%;
-}
-
-/* ##### Footer Section  #####*/
-
-#main-footer{
-  grid-column: 1/6;
-  justify-self: center;
-  align-self: center;
 }
