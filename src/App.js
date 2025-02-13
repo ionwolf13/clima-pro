@@ -72,26 +72,26 @@ function App() {
         monthName: `${monthsYear[month]}`,
       });
     }, 60000);
-  }, [location]);
+  }, []);
   console.log("API", process.env.REACT_APP_API_KEY);
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.weatherbit.io/v2.0/forecast/daily?city=${location}&key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((data) => {
-        console.log("THIS BE THE DATA", data.data);
-        setLocationData({
-          cityName: data.data.city_name,
-          countryCode: data.data.country_code,
-          foreCast: data.data.data,
-          lat: data.data.lat,
-          lon: data.data.lon,
-          stateCode: data.data.state_code,
-          timeZone: data.data.timezone,
-        });
-      });
-  }, [location]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://api.weatherbit.io/v2.0/forecast/daily?city=${location}&key=${process.env.REACT_APP_API_KEY}`
+  //     )
+  //     .then((data) => {
+  //       console.log("THIS BE THE DATA", data.data);
+  //       setLocationData({
+  //         cityName: data.data.city_name,
+  //         countryCode: data.data.country_code,
+  //         foreCast: data.data.data,
+  //         lat: data.data.lat,
+  //         lon: data.data.lon,
+  //         stateCode: data.data.state_code,
+  //         timeZone: data.data.timezone,
+  //       });
+  //     });
+  // }, [location]);
 
   return (
     <div className="app-container">
@@ -108,7 +108,7 @@ function App() {
           updateSearchedLocation(e.target.value);
         }}
       />
-      {location === "none" ? null : (
+      {/* {location !== null && (
         <>
           <MainCard
             locationData={locationData}
@@ -124,7 +124,7 @@ function App() {
             currentDegree={currentDegree}
           />
         </>
-      )}
+      )} */}
       <FooterCont />
     </div>
   );
