@@ -38,12 +38,13 @@
 }
 
 .app-container {
-  background: url("./images/4seasons.jpg") no-repeat center fixed;
-  background-size: contain;
-  -webkit-background-size: cover;
+  background: url("./images/blueline.jpg");
+  background-size: cover;
+  background-image: linear-gradient(#0f2027, #203a43, #2c5364);
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
   overflow: hidden;
   background-repeat: no-repeat;
   display: flex;

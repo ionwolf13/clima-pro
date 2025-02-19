@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
           height: "100%",
           alignItems: "center",
           justifyContent: "center",
-          columnGap: "16px",
+          columnGap: "16px"
         }}
       >
         {forecastData ? (

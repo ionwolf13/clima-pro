@@ -1,0 +1,17 @@
+.current-day-forecast-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90vw;
+  margin-top: 48px;
+  column-gap: 24px;
+  color: white;
+}
+
+.current-day-data {
+  height: 100%;
+}
+
+.current-day-images {
+  height: 100%;
+}

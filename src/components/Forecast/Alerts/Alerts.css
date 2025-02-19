@@ -1,0 +1,11 @@
+.alerts-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 16px;
+  width: auto;
+  background-color: rgba(150, 150, 150, 0.5);
+  border-radius: 8px;
+  padding: 4px 8px;
+  height: 48px;
+}
