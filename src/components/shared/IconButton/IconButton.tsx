@@ -14,7 +14,7 @@ export const IconButton: FC<IconButtonInterface> = (props) => {
   const { size = SizesEnum.MEDIUM, icon, ...restProps } = props;
   return (
     <button {...restProps} className="icon-button" id={`button-size-${size}`}>
-      <img id={`button-icon-size-${size}`} src={icon} />
+      <img id={`button-icon-size-${size}`} src={icon} alt={`icon`} />
     </button>
   );
 };
