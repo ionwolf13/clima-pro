@@ -2,7 +2,7 @@ import React from "react";
 import "./navcont.css";
 import searchIcon from "../../images/searchIcon-1.png";
 
-export const NavCont = ({ clock, todaysDate, setLocation }) => {
+export const NavCont = ({ todaysDate, setLocation }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,10 +37,7 @@ export const NavCont = ({ clock, todaysDate, setLocation }) => {
           />
         </div>
       </form>
-      <h3 className="title-label"> Date: </h3>
       <h4 className="title-value">{todaysDate}</h4>
-      <h3 className="title-label"> Time: </h3>
-      <h4 className="title-value">{clock}</h4>
     </div>
   );
 };
