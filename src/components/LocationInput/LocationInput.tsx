@@ -1,9 +1,17 @@
 import React from "react";
-import "./navcont.css";
+import "./LocationInput.css";
 import searchIcon from "../../images/searchIcon-1.png";
 
-export const NavCont = ({ todaysDate, setLocation }) => {
-  const handleSubmit = (e) => {
+interface LocationInputProps {
+  todaysDate: any;
+  setLocation: any;
+}
+
+export const LocationInput: React.FC<LocationInputProps> = ({
+  todaysDate,
+  setLocation
+}) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
 
     setLocation(e.target.location.value);

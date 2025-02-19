@@ -2,8 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { FooterCont } from "./components/Footer/Footer.jsx";
 import { Header } from "./components/Header/Header.tsx";
-import { NavCont } from "./components/NavCont/NavCont.jsx";
-import statCelsius from "./images/statCelsius.png";
+import { LocationInput } from "./components/LocationInput/LocationInput";
 import { WeekDaysEnum, MonthsEnum } from "./components/shared/Enums/dates";
 import { MainContainer } from "./components/MainContainer/MainContainer";
 import { forecastData } from "./data/data";
@@ -23,11 +22,13 @@ export const App = () => {
     );
   }, []);
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(forecastData);
 
-  useEffect(() => {
-    setData(forecastData);
-  }, []);
+  console.log("INIIA1111", forecastData);
+  // useEffect(() => {
+  //   console.log("INIIAL", forecastData);
+  //   setData(forecastData);
+  // }, [forecastData]);
 
   // useEffect(() => {
   //   axios
@@ -51,7 +52,9 @@ export const App = () => {
   return (
     <div className="app-container">
       <Header forecastData={data} />
-      {!data && <NavCont todaysDate={todaysDate} setLocation={setLocation} />}
+      {!data && (
+        <LocationInput todaysDate={todaysDate} setLocation={setLocation} />
+      )}
       <MainContainer forecastData={data} />
       {/* <input
         value={searchedLocation}
