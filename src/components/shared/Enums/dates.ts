@@ -5,7 +5,7 @@ export enum WeekDaysEnum {
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday",
+  "Saturday"
 }
 
 export enum MonthsEnum {
@@ -20,5 +20,15 @@ export enum MonthsEnum {
   "September",
   "October",
   "November",
-  "December",
+  "December"
+}
+
+export enum Day {
+  Sun = "Sun",
+  Mon = "Mon",
+  Tue = "Tue",
+  Wed = "Wed",
+  Thu = "Thu",
+  Fri = "Fri",
+  Sat = "Sat"
 }

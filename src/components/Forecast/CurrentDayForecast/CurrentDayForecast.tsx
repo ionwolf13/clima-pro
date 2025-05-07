@@ -22,9 +22,14 @@ export const CurrentDayForecast: React.FC<CurrentDayForecastProps> = ({
         .split("With")
         .join("/")
     : description;
-
+  console.log("CURRENT DAY", currentData);
   return (
-    <div className="current-day-forecast-container">
+    <div
+      className="current-day-forecast-container"
+      style={{
+        border: "2px solid black"
+      }}
+    >
       <div className="current-day-data">
         <h1> {Number(currentData.temp).toFixed(0)} ° </h1>
         <h4> {formattedDescription}</h4>
