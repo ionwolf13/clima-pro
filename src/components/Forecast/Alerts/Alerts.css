@@ -5,6 +5,8 @@
   column-gap: 16px;
   max-height: 48px;
   width: 100%;
+  max-width: 600px;
   background-color: rgba(150, 150, 150, 0.5);
+  padding: 0px 8px;
   border-radius: 8px;
 }

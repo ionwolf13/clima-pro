@@ -1,6 +1,7 @@
 .current-day-forecast-container {
   width: 100%;
-  margin-top: 24px;
+  max-width: 600px;
+  min-width: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,4 +17,12 @@
 
 .current-day-images {
   height: 100%;
+}
+
+@media (width < 400px) {
+  .current-day-forecast-container {
+    width: 100%;
+    max-width: 300px;
+    min-width: 300px;
+  }
 }

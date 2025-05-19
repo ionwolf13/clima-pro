@@ -1,19 +1,16 @@
 .future-forecast-container {
-  flex: 1;
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 16px;
-  width: auto;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  padding: 4px 8px;
   text-align: justify;
-  max-width: 500px;
   min-width: 300px;
   height: 100%;
-  max-height: 480px;
+  max-height: 580px;
 }
 
 .future-forecast-table {
@@ -25,14 +22,12 @@
 
 .future-forecast-table-row {
   display: flex;
-  width: auto;
+  width: 100%;
   align-items: center;
-  justify-content: space-evenly;
-  padding-right: 16px;
+  justify-content: space-around;
 }
 
 .future-forecast-table-row-item {
-  width: 24%;
   text-align: right;
 }
 
