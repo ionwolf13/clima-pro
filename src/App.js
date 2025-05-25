@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { FooterCont } from "./components/Footer/Footer.jsx";
+import { Footer } from "./components/Footer/Footer.jsx";
 import { Header } from "./components/Header/Header.tsx";
 import { LocationInput } from "./components/LocationInput/LocationInput";
 import { WeekDaysEnum, MonthsEnum } from "./components/shared/Enums/dates";
@@ -71,10 +71,11 @@ export const App = () => {
   return (
     <div className="app-container">
       <Header forecastData={data} />
-      {!data && (
+      <MainContainer forecastData={data} />
+      {/* {!data && (
         <LocationInput todaysDate={todaysDate} setLocation={setLocation} />
       )}
-      <MainContainer forecastData={data} />
+     */}
       {/* <input
         value={searchedLocation}
         onChange={(e) => {
@@ -82,7 +83,7 @@ export const App = () => {
           updateSearchedLocation(e.target.value);
         }}
       /> */}
-      <FooterCont />
+      <Footer />
     </div>
   );
 };

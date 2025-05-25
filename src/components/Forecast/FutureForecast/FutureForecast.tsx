@@ -22,6 +22,17 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
     >
       <h2> FUTURE FORECAST</h2>
       <div className="future-forecast-table">
+        <div className="future-forecast-table-row">
+          <p className="future-forecast-table-row-item">Day</p>
+          <div
+            className="future-forecast-table-row-item"
+            id="precipitation-column"
+          >
+            <p>Precipitation</p>
+          </div>
+          <p className="future-forecast-table-row-item">Max °</p>
+          <p className="future-forecast-table-row-item">Min °</p>
+        </div>
         {futureForecast.map((data, index) => {
           const dayNumber = new Date(data.datetime).getDay();
           return (

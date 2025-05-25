@@ -6,7 +6,7 @@ import pinterest from "../../images/pinterestwhite.png";
 import twitter from "../../images/twitterwhite.png";
 import youtube from "../../images/youtubewhite.png";
 
-export const FooterCont = () => {
+export const Footer = () => {
   return (
     <div className="footer-container">
       <p>
