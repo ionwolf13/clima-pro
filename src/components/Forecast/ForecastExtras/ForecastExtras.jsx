@@ -5,8 +5,8 @@ export const ExtraDetailsForecast = () => {
     <div
       style={{
         border: "2px solid black",
-        maxWidth: "600px",
-        width: "600px",
+        maxWidth: "500px",
+        width: "500px",
         height: "300px",
         display: "flex",
         flexDirection: "column",

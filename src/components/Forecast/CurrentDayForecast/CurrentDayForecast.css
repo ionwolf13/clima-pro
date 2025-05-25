@@ -1,14 +1,11 @@
 .current-day-forecast-container {
-  width: 100%;
-  max-width: 600px;
-  min-width: 600px;
+  width: 96%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 48px;
   column-gap: 24px;
   color: white;
   background-color: rgba(255, 255, 255, 0.2);
+  max-width: 500px;
 }
 
 .current-day-data {

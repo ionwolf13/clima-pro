@@ -1,9 +1,10 @@
 .main-container {
-  width: auto;
+  max-height: 100vh;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  gap: 32px;
-  overflow: hidden;
 }

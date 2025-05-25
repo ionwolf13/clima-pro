@@ -3,10 +3,9 @@
   justify-content: flex-start;
   align-items: center;
   column-gap: 16px;
-  max-height: 48px;
+  max-height: 64px;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   background-color: rgba(150, 150, 150, 0.5);
-  padding: 0px 8px;
   border-radius: 8px;
 }
