@@ -3,7 +3,7 @@ import statHighTemp from "../../images/statHighTemp.png";
 import statLowTemp from "../../images/statLowTemp.png";
 import statRain from "../../images/statRain.png";
 import statClouds from "../../images/statClouds.png";
-import { cel2Far } from "../utils/utils";
+import { cel2Far } from "../../utils/utils";
 
 export const ForecastCard = ({
   day,

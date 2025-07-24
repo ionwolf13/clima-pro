@@ -4,8 +4,8 @@ import { FooterCont } from "./components/Footer/Footer.jsx";
 import { Header } from "./components/Header/Header.tsx";
 import { NavCont } from "./components/NavCont/NavCont.jsx";
 import statCelsius from "./images/statCelsius.png";
-import { WeekDaysEnum, MonthsEnum } from "./components/shared/Enums/dates";
-import { MainContainer } from "./components/MainContainer/MainContainer";
+import { WeekDaysEnum, MonthsEnum } from "./shared/Enums/dates";
+import { MainContainer } from "./features/MainContainer/MainContainer";
 import { forecastData } from "./data/data";
 import axios from "axios";
 

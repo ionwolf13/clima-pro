@@ -1,5 +1,5 @@
 import React from 'react';
-import { cel2Far } from '../utils/utils';
+import { cel2Far } from '../../utils/utils';
 
 export const MiniCard = ({weather, data, currentDegree}) => {
 

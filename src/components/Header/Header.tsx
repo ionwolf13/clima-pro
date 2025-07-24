@@ -2,7 +2,13 @@ import React from "react";
 import "./Header.css";
 import menuLines from "../../images/menuLines.png";
 import gaiaIcon from "../../images/gaiaIcon.jpeg";
-import { IconButton } from "../shared/IconButton/IconButton";
+import { ReuseContainer } from "../container/ReuseContainer";
+import { IconButton } from "../../shared/IconButton/IconButton";
+
+const styling = {
+  backgroundColor: "rgba(255, 255, 255, 0.5)",
+  height: "40px",
+};
 
 interface HeaderInterface {
   forecastData: any;
@@ -15,7 +21,7 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
   };
 
   return (
-    <div className="header-container">
+    <ReuseContainer styling={styling}>
       <IconButton
         icon={menuLines}
         size={"md"}
@@ -44,6 +50,6 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
           </>
         )}
       </div>
-    </div>
+    </ReuseContainer>
   );
 };
