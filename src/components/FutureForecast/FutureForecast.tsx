@@ -1,25 +1,30 @@
 import React from "react";
-import rainIcon from "../../../images/statRain.png";
+import rainIcon from "../../images/statRain.png";
 import { Day } from "../../shared/Enums/dates";
 import { DaysArray } from "../../shared/constants/dateConstants";
+import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import "./FutureForecast.css";
 
+const styling = () => ({
+  futureForecastContainer: {
+    width: "500px",
+    flexDirection: "column",
+    borderRadius: "16px",
+    height: "580px",
+  },
+});
 interface FutureForecastProps {
   futureForecast: any[];
 }
 
 export const FutureForecast: React.FC<FutureForecastProps> = ({
-  futureForecast
+  futureForecast,
 }) => {
+  const styles = styling();
   console.log("THE FUTURE", futureForecast);
   console.log("ARAY", DaysArray);
   return (
-    <div
-      className="future-forecast-container"
-      style={{
-        border: "2px solid black"
-      }}
-    >
+    <ReuseContainer styling={styles.futureForecastContainer}>
       <h2> FUTURE FORECAST</h2>
       <div className="future-forecast-table">
         <div className="future-forecast-table-row">
@@ -57,6 +62,6 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
           );
         })}
       </div>
-    </div>
+    </ReuseContainer>
   );
 };
