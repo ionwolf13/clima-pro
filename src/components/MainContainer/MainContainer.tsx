@@ -6,6 +6,7 @@ import { CurrentHourlyForecast } from "../CurrentHourlyForecast/CurrentHourlyFor
 import { ExtraDetailsForecast } from "../ForecastExtras/ForecastExtras";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import { Alerts } from "../Alerts/Alerts";
+import { hourlyData } from "../../data/hourlyData";
 
 const styling = () => ({
   mainContainer: {
@@ -30,7 +31,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     <ReuseContainer styling={styles.mainContainer}>
       <CurrentDayForecast currentData={forecastData.data[0]} />
       <Alerts />
-      <CurrentHourlyForecast />
+      <CurrentHourlyForecast hourlyData={hourlyData} />
       <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
       <ExtraDetailsForecast />
     </ReuseContainer>

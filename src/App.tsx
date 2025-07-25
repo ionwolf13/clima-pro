@@ -49,24 +49,24 @@ export const App = () => {
   //     });
   // }, [location]);
 
-  useEffect(() => {
-    axios
-      .get(
-        // `https://api.weatherbit.io/v2.0/current?city=${"Houston"}&key=fe5a73e5fa9a4032a9655c9efb577197&include=minutely`
-        `https://api.weatherbit.io/v2.0/history/hourly?city=${"Houston"}&start_date=2025-02-12&end_date=2025-02-13&&key=fe5a73e5fa9a4032a9655c9efb577197&include=minutely`
-      )
-      .then((data) => {
-        console.log("THIS BE THE DATA", data.data);
-        //       setLocationData({
-        //         cityName: data.data.city_name,
-        //         countryCode: data.data.country_code,
-        //         foreCast: data.data.data,
-        //         lat: data.data.lat,
-        //         lon: data.data.lon,
-        //         stateCode: data.data.state_code,
-        //         timeZone: data.data.timezone,
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       // `https://api.weatherbit.io/v2.0/current?city=${"Houston"}&key=fe5a73e5fa9a4032a9655c9efb577197&include=minutely`
+  //       `https://api.weatherbit.io/v2.0/history/hourly?city=${"Houston"}&start_date=2025-02-12&end_date=2025-02-13&&key=fe5a73e5fa9a4032a9655c9efb577197&include=minutely`
+  //     )
+  //     .then((data) => {
+  //       console.log("THIS BE THE DATA", data.data);
+  //       //       setLocationData({
+  //       //         cityName: data.data.city_name,
+  //       //         countryCode: data.data.country_code,
+  //       //         foreCast: data.data.data,
+  //       //         lat: data.data.lat,
+  //       //         lon: data.data.lon,
+  //       //         stateCode: data.data.state_code,
+  //       //         timeZone: data.data.timezone,
+  //     });
+  // }, []);
 
   return (
     <div className="app-container">
