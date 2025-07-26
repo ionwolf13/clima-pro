@@ -2,14 +2,16 @@ import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import icon from "../../images/statLon.png";
 import Box from "@mui/material/Box";
 import { SparkLineChart } from "@mui/x-charts";
+import dropsIcon from "../../images/drops.webp";
+import sunnyRainIcon from "../../images/sunnyRain.webp";
+import cloudSunnyIcon from "../../images/cloudySunny.webp";
 
 const styling = () => ({
   currentHourlyForecastContainer: {
     borderRadius: "16px",
     width: "500px",
-    height: "300px",
+    height: "360px",
     flexDirection: "column",
-    overFlow: "scroll",
   },
   hourlyContainer: {
     flexDirection: "column",
@@ -38,43 +40,77 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
     69, 97, 65, 76, 53,
   ];
   const dum = [
-    2, 0, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1,
+    2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1,
   ];
 
   console.log("DATA", hourlyTemperatures, "");
 
   return (
     <ReuseContainer styling={styles.currentHourlyForecastContainer}>
-      <h3> Mostly cloudy. Lows overnight in the low 80s. </h3>
+      <h4>Mostly cloudy. Lows overnight in the low 80s. </h4>
       <ReuseContainer
         styling={{
-          columnGap: "10px",
-          fontSize: "x-small",
+          flexDirection: "column",
+          overflow: "scroll",
+          alignItems: "flex-start",
           backgroundColor: "rgba(0,0,0,0)",
         }}
       >
-        {time.map((times, index) => (
-          <ReuseContainer
-            styling={{
-              flexDirection: "column",
-              backgroundColor: "rgba(0,0,0,0)",
-            }}
-          >
-            <p style={{ fontSize: "xx-small" }}>{times}</p>
-            <p>{temps[index]} </p>
-            <p>{dum[index]} </p>
-          </ReuseContainer>
-        ))}
+        <ReuseContainer
+          styling={{
+            columnGap: "24px",
+            fontSize: "small",
+            backgroundColor: "rgba(0,0,0,0)",
+            width: "1610px",
+          }}
+        >
+          {time.map((times, index) => (
+            <ReuseContainer
+              styling={{
+                flexDirection: "column",
+                backgroundColor: "rgba(0,0,0,0)",
+              }}
+            >
+              <p style={{ fontSize: "small" }}>
+                {times > 12 ? `${times} AM` : `${times} PM`}
+              </p>
+              <img
+                src={index === 0 ? sunnyRainIcon : cloudSunnyIcon}
+                height={16}
+              />
+              <p>{temps[index]} °</p>
+            </ReuseContainer>
+          ))}
+        </ReuseContainer>
+        <Box sx={{ width: "1600px" }}>
+          <SparkLineChart
+            data={hourlyTemperatures}
+            height={80}
+            showHighlight
+            showTooltip
+            color={"#f56942"}
+          />
+        </Box>
+        <ReuseContainer
+          styling={{
+            columnGap: "10px",
+            fontSize: "small",
+            backgroundColor: "rgba(0,0,0,0)",
+            width: "1600px",
+          }}
+        >
+          {time.map((times, index) => (
+            <ReuseContainer
+              styling={{
+                backgroundColor: "rgba(0,0,0,0)",
+              }}
+            >
+              <img src={dropsIcon} height={16} />
+              <p> % {dum[index]} </p>
+            </ReuseContainer>
+          ))}
+        </ReuseContainer>
       </ReuseContainer>
-      <Box sx={{ flexGrow: 1, width: "92%" }}>
-        <SparkLineChart
-          data={hourlyTemperatures}
-          height={100}
-          showHighlight
-          showTooltip
-          color={"#f56942"}
-        />
-      </Box>
     </ReuseContainer>
   );
 };

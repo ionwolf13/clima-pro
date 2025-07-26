@@ -3,6 +3,7 @@ import "./Header.css";
 import gaiaIcon from "../../images/gaiaIcon.jpeg";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import globalSearchIcon from "../../images/globalSearch.webp";
+import { TextField, Button } from "@mui/material";
 
 const styling = () => ({
   headerContainer: {
@@ -22,11 +23,12 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
       {forecastData ? (
         <ReuseContainer>
           <img src={globalSearchIcon} height={32} />
-          <input
+          <TextField
             value={`${forecastData?.city_name}, ${
               forecastData?.state_code || forecastData?.country_code
             }`}
           />
+          <Button variant="contained">Search</Button>
         </ReuseContainer>
       ) : (
         <>
