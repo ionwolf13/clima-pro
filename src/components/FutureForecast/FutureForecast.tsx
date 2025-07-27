@@ -10,7 +10,7 @@ const styling = () => ({
     width: "500px",
     flexDirection: "column",
     borderRadius: "16px",
-    height: "580px",
+    height: "460px",
   },
 });
 interface FutureForecastProps {
@@ -25,7 +25,6 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
   console.log("ARAY", DaysArray);
   return (
     <ReuseContainer styling={styles.futureForecastContainer}>
-      <h2> FUTURE FORECAST</h2>
       <div className="future-forecast-table">
         <div className="future-forecast-table-row">
           <p className="future-forecast-table-row-item">Day</p>

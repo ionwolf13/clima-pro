@@ -82,13 +82,14 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
             </ReuseContainer>
           ))}
         </ReuseContainer>
-        <Box sx={{ width: "1600px" }}>
+        <Box sx={{ width: "1600px", marginLeft: "6px" }}>
           <SparkLineChart
             data={hourlyTemperatures}
             height={80}
             showHighlight
             showTooltip
             color={"#f56942"}
+            valueFormatter={(value) => `${value}°`}
           />
         </Box>
         <ReuseContainer
