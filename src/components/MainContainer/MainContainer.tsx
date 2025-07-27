@@ -7,14 +7,17 @@ import { ExtraDetailsForecast } from "../ForecastExtras/ForecastExtras";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import { Alerts } from "../Alerts/Alerts";
 import { hourlyData } from "../../data/hourlyData";
+import { MiniCard } from "../MiniCard/MiniCard";
 
 const styling = () => ({
   mainContainer: {
-    height: "100vh",
+    // height: "100vh",
     flexDirection: "column",
     rowGap: "24px",
     flexWrap: "wrap",
     backgroundColor: "rgba(0,0,0,0)",
+    justifyContent: "flex-start",
+    paddingTop: "40px",
   },
 });
 
@@ -32,8 +35,12 @@ export const MainContainer: React.FC<MainContainerProps> = ({
       <CurrentDayForecast currentData={forecastData.data[0]} />
       <Alerts />
       <CurrentHourlyForecast hourlyData={hourlyData} />
+      <MiniCard titleOne={"UV Index"} titleTwo={"Humidity"} />
       <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
       <ExtraDetailsForecast />
+      <MiniCard titleOne={"Air Quality Index"} titleTwo={"Wind"} />
+      <MiniCard titleOne={"Pressure"} titleTwo={"Visibility"} />
+      <MiniCard titleOne={"Dew Point"} titleTwo={"Sunrise/Sunset"} />
     </ReuseContainer>
   );
 };
