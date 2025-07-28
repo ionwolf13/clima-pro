@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import { Gauge } from "@mui/x-charts/Gauge";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 
-export const MiniCard: React.FC<any> = ({ titleOne, titleTwo }) => {
+export const MiniCard: React.FC<any> = ({ titleOne, titleTwo, titleThree }) => {
   return (
     <ReuseContainer
       styling={{
@@ -15,12 +15,12 @@ export const MiniCard: React.FC<any> = ({ titleOne, titleTwo }) => {
       <ReuseContainer
         styling={{
           flexDirection: "column",
-          height: "220px",
-          width: "220px",
+          height: "160px",
+          width: "160px",
           borderRadius: "16px",
         }}
       >
-        <h3> {titleOne} </h3>
+        <h4> {titleOne} </h4>
         <Gauge
           width={160}
           height={160}
@@ -39,12 +39,36 @@ export const MiniCard: React.FC<any> = ({ titleOne, titleTwo }) => {
       <ReuseContainer
         styling={{
           flexDirection: "column",
-          height: "220px",
-          width: "220px",
+          height: "160px",
+          width: "160px",
           borderRadius: "16px",
         }}
       >
-        <h3> {titleTwo} </h3>
+        <h4> {titleTwo} </h4>
+        <Gauge
+          width={160}
+          height={160}
+          value={70}
+          startAngle={-90}
+          endAngle={90}
+          text={({ value }) => `${value} %`}
+          sx={{
+            ["& .MuiGauge-valueText"]: {
+              fontSize: 24,
+              fontWeight: 800,
+            },
+          }}
+        />
+      </ReuseContainer>
+      <ReuseContainer
+        styling={{
+          flexDirection: "column",
+          height: "160px",
+          width: "160px",
+          borderRadius: "16px",
+        }}
+      >
+        <h4> {titleThree} </h4>
         <Gauge
           width={160}
           height={160}

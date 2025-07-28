@@ -1,9 +1,0 @@
-.footer-icons {
-  height: 40px;
-}
-
-@media screen and (max-width: 600px) {
-  .footer-icons {
-    height: 24px;
-  }
-}
