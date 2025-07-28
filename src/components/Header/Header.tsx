@@ -1,9 +1,15 @@
 import React from "react";
-import "./Header.css";
 import gaiaIcon from "../../images/gaiaIcon.jpeg";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import globalSearchIcon from "../../images/globalSearch.webp";
-import { TextField, Button, InputAdornment } from "@mui/material";
+import {
+  TextField,
+  Button,
+  InputAdornment,
+  MenuItem,
+  Select,
+  InputLabel,
+} from "@mui/material";
 
 const styling = () => ({
   headerContainer: {
@@ -22,23 +28,31 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
     <ReuseContainer styling={styles.headerContainer}>
       {forecastData ? (
         <ReuseContainer styling={{ columnGap: "16px" }}>
-          <Button variant="contained">Degrees to C °</Button>
+          {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={"Houston, TX"}
+            // label="Favorites"
+            onChange={() => {}}
+            startAdornment={
+              <InputAdornment position="start">
+                <img src={globalSearchIcon} height={24} />
+              </InputAdornment>
+            }
+          >
+            <MenuItem value={"Houston, TX"}>Houston, TX</MenuItem>
+            <MenuItem value={"Dallas, TX"}>Dallas, TX</MenuItem>
+            <MenuItem value={"Austin, TX"}>Austin, TX</MenuItem>
+          </Select>
+          <Button variant="contained">Change to C°</Button>
           <TextField
             size="small"
-            label="Search"
+            label="Location"
             sx={{ paddingTop: "0px" }}
             value={`${forecastData?.city_name}, ${
               forecastData?.state_code || forecastData?.country_code
             }`}
-            slotProps={{
-              input: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <img src={globalSearchIcon} height={24} />
-                  </InputAdornment>
-                ),
-              },
-            }}
           />
           <Button variant="contained">Search</Button>
         </ReuseContainer>

@@ -35,12 +35,19 @@ export const MainContainer: React.FC<MainContainerProps> = ({
       <CurrentDayForecast currentData={forecastData.data[0]} />
       <Alerts />
       <CurrentHourlyForecast hourlyData={hourlyData} />
-      <MiniCard titleOne={"UV Index"} titleTwo={"Humidity"} />
+      <MiniCard
+        titleOne={"Air Quality Index"}
+        titleTwo={"UV Index"}
+        titleThree={"Humidity"}
+      />
       <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
       <ExtraDetailsForecast />
-      <MiniCard titleOne={"Air Quality Index"} titleTwo={"Wind"} />
-      <MiniCard titleOne={"Pressure"} titleTwo={"Visibility"} />
-      <MiniCard titleOne={"Dew Point"} titleTwo={"Sunrise/Sunset"} />
+      <MiniCard
+        titleOne={"Wind"}
+        titleTwo={"Pressure"}
+        titleThree={"Visibility"}
+      />
+      {/* <MiniCard titleOne={"Pressure"} titleTwo={"Visibility"} />*/}
     </ReuseContainer>
   );
 };
