@@ -8,6 +8,7 @@ import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import { Alerts } from "../Alerts/Alerts";
 import { hourlyData } from "../../data/hourlyData";
 import { MiniCard } from "../MiniCard/MiniCard";
+import { MiniCardRow } from "../MiniCardRow/MiniCardRow";
 
 const styling = () => ({
   mainContainer: {
@@ -35,19 +36,19 @@ export const MainContainer: React.FC<MainContainerProps> = ({
       <CurrentDayForecast currentData={forecastData.data[0]} />
       <Alerts />
       <CurrentHourlyForecast hourlyData={hourlyData} />
-      <MiniCard
-        titleOne={"Air Quality Index"}
-        titleTwo={"UV Index"}
-        titleThree={"Humidity"}
+      <MiniCardRow
+        dataSetOne={{ title: "Air Quality Index", data: { value: 30 } }}
+        dataSetTwo={{ title: "UV Index", data: { value: 30 } }}
+        dataSetThree={{ title: "Humidity", data: { value: 30 } }}
       />
       <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
       <ExtraDetailsForecast />
-      <MiniCard
-        titleOne={"Wind"}
-        titleTwo={"Pressure"}
-        titleThree={"Visibility"}
+      <MiniCardRow
+        dataSetOne={{ title: "Wind", data: { value: 30 } }}
+        dataSetTwo={{ title: "Pressure", data: { value: 30 } }}
+        dataSetThree={{ title: "Visibility", data: { value: 30 } }}
       />
-      {/* <MiniCard titleOne={"Pressure"} titleTwo={"Visibility"} />*/}
+      {/* <MiniCardRow dataSetOne={"Pressure"} dataSetTwo={"Visibility"} />*/}
     </ReuseContainer>
   );
 };
