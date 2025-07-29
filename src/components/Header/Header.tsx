@@ -1,5 +1,6 @@
 import React from "react";
 import gaiaIcon from "../../images/gaiaIcon.jpeg";
+import starIcon from "../../images/star.webp";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import globalSearchIcon from "../../images/globalSearch.webp";
 import {
@@ -28,16 +29,15 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
     <ReuseContainer styling={styles.headerContainer}>
       {forecastData ? (
         <ReuseContainer styling={{ columnGap: "16px" }}>
-          {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={"Houston, TX"}
-            // label="Favorites"
             onChange={() => {}}
+            size="small"
             startAdornment={
               <InputAdornment position="start">
-                <img src={globalSearchIcon} height={24} />
+                <img src={starIcon} height={24} />
               </InputAdornment>
             }
           >
@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
           <TextField
             size="small"
             label="Location"
-            sx={{ paddingTop: "0px" }}
+            sx={{ paddingTop: "0px", width: "160px" }}
             value={`${forecastData?.city_name}, ${
               forecastData?.state_code || forecastData?.country_code
             }`}
