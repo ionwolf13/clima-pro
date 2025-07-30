@@ -9,6 +9,12 @@ import { Alerts } from "../Alerts/Alerts";
 import { hourlyData } from "../../data/hourlyData";
 import { MiniCard } from "../MiniCard/MiniCard";
 import { MiniCardRow } from "../MiniCardRow/MiniCardRow";
+import dropPercentIcon from "../../images/dropPercent.webp";
+import sunRaysIcon from "../../images/sunRays.webp";
+import visibilityIcon from "../../images/visibility.webp";
+import windIcon from "../../images/wind.webp";
+import airQualityIcon from "../../images/airQualityIndex.webp";
+import pressureIcon from "../../images/pressure.webp";
 
 const styling = () => ({
   mainContainer: {
@@ -37,18 +43,37 @@ export const MainContainer: React.FC<MainContainerProps> = ({
       <Alerts />
       <CurrentHourlyForecast hourlyData={hourlyData} />
       <MiniCardRow
-        dataSetOne={{ title: "Air Quality Index", data: { value: 30 } }}
-        dataSetTwo={{ title: "UV Index", data: { value: 30 } }}
-        dataSetThree={{ title: "Humidity", data: { value: 30 } }}
+        dataSetOne={{
+          title: "Air Quality",
+          data: { value: 30 },
+          icon: airQualityIcon,
+        }}
+        dataSetTwo={{
+          title: "UV Index",
+          data: { value: 30 },
+          icon: sunRaysIcon,
+        }}
+        dataSetThree={{
+          title: "Humidity",
+          data: { value: 30 },
+          icon: dropPercentIcon,
+        }}
       />
       <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
       <ExtraDetailsForecast />
       <MiniCardRow
-        dataSetOne={{ title: "Wind", data: { value: 30 } }}
-        dataSetTwo={{ title: "Pressure", data: { value: 30 } }}
-        dataSetThree={{ title: "Visibility", data: { value: 30 } }}
+        dataSetOne={{ title: "Wind", data: { value: 30 }, icon: windIcon }}
+        dataSetTwo={{
+          title: "Pressure",
+          data: { value: 30 },
+          icon: pressureIcon,
+        }}
+        dataSetThree={{
+          title: "Visibility",
+          data: { value: 30 },
+          icon: visibilityIcon,
+        }}
       />
-      {/* <MiniCardRow dataSetOne={"Pressure"} dataSetTwo={"Visibility"} />*/}
     </ReuseContainer>
   );
 };

@@ -25,15 +25,17 @@ export const ExtraDetailsForecast = ({
         justifyContent: "flex-start",
         position: "relative",
         flexDirection: "column",
+        borderRadius: "16px",
       }}
     >
       <h4 style={{ marginTop: "10px" }}> Sunrise / Sunset </h4>
-      <div style={{ position: "absolute", left: "78px", top: "80px" }}>
+      <div style={{ position: "absolute", left: "101px", top: "103px" }}>
         <Gauge
+          color="#FAA500"
           width={130}
-          height={130}
+          height={84}
           value={30}
-          startAngle={225}
+          startAngle={180}
           endAngle={90}
           text={({ value }) => `${value} %`}
           sx={{
@@ -53,6 +55,7 @@ export const ExtraDetailsForecast = ({
         }}
       >
         <Gauge
+          color="#FAA500"
           width={150}
           height={150}
           value={70}
@@ -67,13 +70,14 @@ export const ExtraDetailsForecast = ({
           }}
         />
       </div>
-      <div style={{ position: "absolute", right: "78px", top: "80px" }}>
+      <div style={{ position: "absolute", right: "101px", top: "103px" }}>
         <Gauge
+          color="#FAA500"
           width={130}
-          height={130}
+          height={84}
           value={70}
           startAngle={-90}
-          endAngle={-225}
+          endAngle={-180}
           text={({ value }) => `${value} %`}
           sx={{
             ["& .MuiGauge-valueText"]: {
