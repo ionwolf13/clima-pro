@@ -6,15 +6,18 @@ import React from "react";
 
 const styling: CSSPropertiesType = () => ({
   miniCardRowContainer: {
-    width: "50px",
+    width: "500px",
     height: "200px",
+    borderRadius: "16px",
+    backgroundColor: "rgba(0,0,0,0)",
+    columnGap: "8px",
   },
 });
 
 interface MiniCardRowProps {
-  dataSetOne: any;
-  dataSetTwo: any;
-  dataSetThree: any;
+  dataSetOne: { title: string; data: { value: number }; icon: any };
+  dataSetTwo: { title: string; data: { value: number }; icon: any };
+  dataSetThree: { title: string; data: { value: number }; icon: any };
 }
 
 export const MiniCardRow: React.FC<MiniCardRowProps> = ({
@@ -25,15 +28,45 @@ export const MiniCardRow: React.FC<MiniCardRowProps> = ({
   const styles = styling();
 
   return (
-    <ReuseContainer sytling={styles.miniCardRowContainer}>
+    <ReuseContainer styling={styles.miniCardRowContainer}>
       <MiniCard>
-        <ReuseGaugeCard data={dataSetOne} />
+        <ReuseContainer
+          styling={{
+            backgroundColor: "rgba(0,0,0,0)",
+            columnGap: "8px",
+            height: "56px",
+          }}
+        >
+          <img src={dataSetOne.icon} alt="icon" height={24} />
+          <h4>{dataSetOne.title}</h4>
+        </ReuseContainer>
+        <ReuseGaugeCard data={dataSetOne.data} />
       </MiniCard>
       <MiniCard>
-        <ReuseGaugeCard data={dataSetTwo} />
+        <ReuseContainer
+          styling={{
+            backgroundColor: "rgba(0,0,0,0)",
+            columnGap: "8px",
+            height: "56px",
+          }}
+        >
+          <img src={dataSetTwo.icon} alt="icon" height={24} />
+          <h4>{dataSetTwo.title}</h4>
+        </ReuseContainer>
+        <ReuseGaugeCard data={dataSetTwo.data} />
       </MiniCard>
       <MiniCard>
-        <ReuseGaugeCard data={dataSetThree} />
+        <ReuseContainer
+          styling={{
+            backgroundColor: "rgba(0,0,0,0)",
+            columnGap: "8px",
+            height: "56px",
+          }}
+        >
+          <img src={dataSetThree.icon} alt="icon" height={24} />
+          <h4>{dataSetThree.title}</h4>
+        </ReuseContainer>
+        <ReuseGaugeCard data={dataSetThree.data} />
       </MiniCard>
     </ReuseContainer>
   );
