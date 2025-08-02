@@ -5,13 +5,16 @@ import { SparkLineChart } from "@mui/x-charts";
 import dropsIcon from "../../images/drops.webp";
 import sunnyRainIcon from "../../images/sunnyRain.webp";
 import cloudSunnyIcon from "../../images/cloudySunny.webp";
+import { NoBackgroundColor } from "../../shared/constants/colors";
+import { Cloud } from "lucide-react";
 
 const styling = () => ({
   currentHourlyForecastContainer: {
     borderRadius: "16px",
-    width: "500px",
-    height: "360px",
+    width: "600px",
     flexDirection: "column",
+    justifyContent: "flex-start",
+    padding: "8px 16px",
   },
   hourlyContainer: {
     flexDirection: "column",
@@ -47,6 +50,25 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
 
   return (
     <ReuseContainer styling={styles.currentHourlyForecastContainer}>
+      <ReuseContainer
+        styling={{
+          backgroundColor: NoBackgroundColor,
+          justifyContent: "flex-start",
+          columnGap: "16px",
+        }}
+      >
+        <Cloud
+          color="white"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            padding: "8px",
+            borderRadius: "32px",
+          }}
+        />
+        <span style={{ fontSize: "x-large", color: "white" }}>
+          <strong>Hourly Forecast</strong>
+        </span>
+      </ReuseContainer>
       <h4>Mostly cloudy. Lows overnight in the low 80s. </h4>
       <ReuseContainer
         styling={{

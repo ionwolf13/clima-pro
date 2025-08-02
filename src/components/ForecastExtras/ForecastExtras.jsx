@@ -3,7 +3,7 @@ import { Gauge } from "@mui/x-charts/Gauge";
 
 const styling = () => ({
   extraDetailsContainer: {
-    width: "500px",
+    width: "640px",
     height: "300px",
     borderRadius: "16px",
   },
@@ -20,7 +20,7 @@ export const ExtraDetailsForecast = ({
     <ReuseContainer
       styling={{
         height: "200px",
-        width: "500px",
+        width: "640px",
         // backgroundColor: "rgba(0,0,0,0)",
         justifyContent: "flex-start",
         position: "relative",

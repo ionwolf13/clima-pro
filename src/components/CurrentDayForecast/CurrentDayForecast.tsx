@@ -1,15 +1,18 @@
 import React from "react";
-import uvIcon from "../../images/statUV.png";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
+import { Thermometer, Sun } from "lucide-react";
+import { NoBackgroundColor } from "../../shared/constants/colors";
 import "./CurrentDayForecast.css";
 
 const styling = () => ({
   currentDayContainer: {
     columnGap: "24px",
     color: "white",
-    maxWidth: "500px",
-    height: "200px",
+    maxWidth: "600px",
     borderRadius: "16px",
+    padding: "0px 16px",
+    flexDirection: "column",
+    rowGap: "8px",
   },
 });
 
@@ -36,24 +39,26 @@ export const CurrentDayForecast: React.FC<CurrentDayForecastProps> = ({
     : description;
   console.log("CURRENT DAY", currentData);
 
-  const date = new Date();
-
   return (
     <ReuseContainer styling={styles.currentDayContainer}>
-      <div className="current-day-data">
-        <h1> {Number(currentData.temp).toFixed(0)} ° </h1>
-        <h4> {formattedDescription}</h4>
-        <h5>
-          {apparentMaxTemperature} ° / {apparentMinTemperature} Feels Like{" "}
-          {averageApparentTemperature} °
-        </h5>
-        <p>
-          {date.toLocaleDateString()} {date.getHours()}:{date.getMinutes()}
-        </p>
-      </div>
-      <div className="current-day-images">
-        <img src={uvIcon} alt="temp icon" height={100} />
-      </div>
+      <ReuseContainer
+        styling={{
+          backgroundColor: NoBackgroundColor,
+        }}
+      >
+        <Thermometer />
+        <span style={{ fontSize: "56px" }}>
+          {Number(currentData.temp).toFixed(0)} °
+        </span>
+      </ReuseContainer>
+      <span style={{ fontSize: "large" }}>
+        <strong>{formattedDescription}</strong>
+      </span>
+      <span>
+        Feels Like {averageApparentTemperature}°C • High{" "}
+        {apparentMaxTemperature}°C • Low {apparentMinTemperature}°C
+      </span>
+      <Sun size={100} style={{ margin: "16px" }} color="orange" />
     </ReuseContainer>
   );
 };
