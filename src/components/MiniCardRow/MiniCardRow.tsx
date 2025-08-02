@@ -2,14 +2,15 @@ import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import { MiniCard } from "../MiniCard/MiniCard";
 import { CSSPropertiesType } from "../../shared/Types/cssTypes";
 import { ReuseGaugeCard } from "../ReuseGaugeCard/ReuseGaugeCard";
+import { NoBackgroundColor } from "../../shared/constants/colors";
 import React from "react";
 
 const styling: CSSPropertiesType = () => ({
   miniCardRowContainer: {
     width: "640px",
-    height: "160px",
+    // height: "160px",
     borderRadius: "16px",
-    backgroundColor: "rgba(0,0,0,0)",
+    backgroundColor: NoBackgroundColor,
     columnGap: "8px",
   },
 });
@@ -27,44 +28,75 @@ export const MiniCardRow: React.FC<MiniCardRowProps> = ({
 }) => {
   const styles = styling();
 
+  const IconOne = dataSetOne.icon;
+  const IconTwo = dataSetTwo.icon;
+  const IconThree = dataSetThree.icon;
+
   return (
     <ReuseContainer styling={styles.miniCardRowContainer}>
       <MiniCard>
         <ReuseContainer
           styling={{
-            backgroundColor: "rgba(0,0,0,0)",
+            backgroundColor: NoBackgroundColor,
             columnGap: "8px",
             height: "56px",
+            justifyContent: "center",
           }}
         >
-          <img src={dataSetOne.icon} alt="icon" height={24} />
-          <h4>{dataSetOne.title}</h4>
+          <IconOne
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              padding: "8px",
+              borderRadius: "32px",
+            }}
+          />
+          <span style={{ fontSize: "x-large" }}>
+            <strong>{dataSetOne.title}</strong>
+          </span>
         </ReuseContainer>
         <ReuseGaugeCard data={dataSetOne.data} />
       </MiniCard>
       <MiniCard>
         <ReuseContainer
           styling={{
-            backgroundColor: "rgba(0,0,0,0)",
+            backgroundColor: NoBackgroundColor,
             columnGap: "8px",
             height: "56px",
+            justifyContent: "center",
           }}
         >
-          <img src={dataSetTwo.icon} alt="icon" height={24} />
-          <h4>{dataSetTwo.title}</h4>
+          <IconTwo
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              padding: "8px",
+              borderRadius: "32px",
+            }}
+          />
+          <span style={{ fontSize: "x-large" }}>
+            <strong>{dataSetTwo.title}</strong>
+          </span>
         </ReuseContainer>
         <ReuseGaugeCard data={dataSetTwo.data} />
       </MiniCard>
       <MiniCard>
         <ReuseContainer
           styling={{
-            backgroundColor: "rgba(0,0,0,0)",
+            backgroundColor: NoBackgroundColor,
             columnGap: "8px",
             height: "56px",
+            justifyContent: "center",
           }}
         >
-          <img src={dataSetThree.icon} alt="icon" height={24} />
-          <h4>{dataSetThree.title}</h4>
+          <IconThree
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              padding: "8px",
+              borderRadius: "32px",
+            }}
+          />
+          <span style={{ fontSize: "x-large" }}>
+            <strong>{dataSetThree.title}</strong>
+          </span>
         </ReuseContainer>
         <ReuseGaugeCard data={dataSetThree.data} />
       </MiniCard>

@@ -1,5 +1,8 @@
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import { Gauge } from "@mui/x-charts/Gauge";
+import { SparkLineChart } from "@mui/x-charts";
+import { NoBackgroundColor } from "../../shared/constants/colors";
+import { Sunrise, Sunset } from "lucide-react";
 
 const styling = () => ({
   extraDetailsContainer: {
@@ -21,15 +24,59 @@ export const ExtraDetailsForecast = ({
       styling={{
         height: "200px",
         width: "640px",
-        // backgroundColor: "rgba(0,0,0,0)",
-        justifyContent: "flex-start",
         position: "relative",
         flexDirection: "column",
         borderRadius: "16px",
+        justifyContent: "flex-start",
       }}
     >
-      <h4 style={{ marginTop: "10px" }}> Sunrise / Sunset </h4>
-      <div style={{ position: "absolute", left: "101px", top: "103px" }}>
+      <ReuseContainer
+        styling={{
+          backgroundColor: NoBackgroundColor,
+          justifyContent: "center",
+          alignItems: "flex-start",
+        }}
+      >
+        <ReuseContainer
+          styling={{
+            backgroundColor: NoBackgroundColor,
+            alignItems: "flex-start",
+            columnGap: "16px",
+          }}
+        >
+          <Sunrise
+            color="#f48037"
+            style={{
+              backgroundColor: "rgba(244, 128, 55, 0.1)",
+              padding: "8px",
+              borderRadius: "32px",
+            }}
+          />
+          <span style={{ marginTop: "10px" }}>
+            <strong>Sunrise</strong>
+          </span>
+        </ReuseContainer>
+        <ReuseContainer
+          styling={{
+            backgroundColor: NoBackgroundColor,
+            alignItems: "flex-start",
+            columnGap: "16px",
+          }}
+        >
+          <span style={{ marginTop: "10px" }}>
+            <strong>Sunset</strong>
+          </span>
+          <Sunset
+            color="#f48037"
+            style={{
+              backgroundColor: "rgba(244, 128, 55, 0.1)",
+              padding: "8px",
+              borderRadius: "32px",
+            }}
+          />
+        </ReuseContainer>
+      </ReuseContainer>
+      <div style={{ position: "absolute", left: "171px", top: "103px" }}>
         <Gauge
           color="#FAA500"
           width={130}
@@ -49,9 +96,9 @@ export const ExtraDetailsForecast = ({
       <div
         style={{
           position: "absolute",
-          left: "175px",
+          left: "245px",
           zIndex: "1",
-          bottom: "44px",
+          bottom: "60px",
         }}
       >
         <Gauge
@@ -70,7 +117,7 @@ export const ExtraDetailsForecast = ({
           }}
         />
       </div>
-      <div style={{ position: "absolute", right: "101px", top: "103px" }}>
+      <div style={{ position: "absolute", right: "171px", top: "103px" }}>
         <Gauge
           color="#FAA500"
           width={130}

@@ -15,14 +15,15 @@ import visibilityIcon from "../../images/visibility.webp";
 import windIcon from "../../images/wind.webp";
 import airQualityIcon from "../../images/airQualityIndex.webp";
 import pressureIcon from "../../images/pressure.webp";
+import { Droplet, Sun, Wind, WindArrowDown, Eye, Gauge } from "lucide-react";
+import { NoBackgroundColor } from "../../shared/constants/colors";
 
 const styling = () => ({
   mainContainer: {
-    // height: "100vh",
     flexDirection: "column",
     rowGap: "24px",
     flexWrap: "wrap",
-    backgroundColor: "rgba(0,0,0,0)",
+    backgroundColor: NoBackgroundColor,
     justifyContent: "flex-start",
     paddingTop: "40px",
   },
@@ -46,32 +47,32 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         dataSetOne={{
           title: "Air Quality",
           data: { value: 30 },
-          icon: airQualityIcon,
+          icon: Gauge,
         }}
         dataSetTwo={{
           title: "UV Index",
           data: { value: 30 },
-          icon: sunRaysIcon,
+          icon: Sun,
         }}
         dataSetThree={{
           title: "Humidity",
           data: { value: 30 },
-          icon: dropPercentIcon,
+          icon: Droplet,
         }}
       />
       <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
       <ExtraDetailsForecast />
       <MiniCardRow
-        dataSetOne={{ title: "Wind", data: { value: 30 }, icon: windIcon }}
+        dataSetOne={{ title: "Wind", data: { value: 30 }, icon: Wind }}
         dataSetTwo={{
           title: "Pressure",
           data: { value: 30 },
-          icon: pressureIcon,
+          icon: WindArrowDown,
         }}
         dataSetThree={{
           title: "Visibility",
           data: { value: 30 },
-          icon: visibilityIcon,
+          icon: Eye,
         }}
       />
     </>

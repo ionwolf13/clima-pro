@@ -5,8 +5,8 @@ export const MiniCard: React.FC<any> = (props) => {
     <ReuseContainer
       styling={{
         flexDirection: "column",
-        height: "160px",
-        width: "160px",
+        height: "204px",
+        width: "204px",
         borderRadius: "16px",
       }}
     >

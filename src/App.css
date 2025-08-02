@@ -7,10 +7,10 @@
   align-items: center;
   row-gap: 16px;
   padding-top: 32px;
+  color: white;
 }
 
 p {
-  color: white;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif, "Lucida Sans Unicode", Geneva, Verdana,
     sans-serif;

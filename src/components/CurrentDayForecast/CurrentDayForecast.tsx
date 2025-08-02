@@ -7,7 +7,6 @@ import "./CurrentDayForecast.css";
 const styling = () => ({
   currentDayContainer: {
     columnGap: "24px",
-    color: "white",
     maxWidth: "600px",
     borderRadius: "16px",
     padding: "0px 16px",
