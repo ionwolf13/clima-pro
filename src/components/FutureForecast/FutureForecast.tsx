@@ -6,7 +6,7 @@ import "./FutureForecast.css";
 
 const styling = () => ({
   futureForecastContainer: {
-    width: "500px",
+    width: "640px",
     flexDirection: "column",
     borderRadius: "16px",
     height: "460px",

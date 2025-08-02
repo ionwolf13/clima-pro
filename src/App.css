@@ -1,11 +1,12 @@
 .app-container {
   background-image: linear-gradient(#0f2027, #203a43, #2c5364);
   width: 100dvw;
-  /* height: auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 16px;
+  padding-top: 32px;
 }
 
 p {

@@ -2,13 +2,16 @@ import React from "react";
 import alertIcon from "../../images/warning.jpeg";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import "./Alerts.css";
+import { TriangleAlert } from "lucide-react";
 
 const styling = () => ({
   alertsContainer: {
     columnGap: "16px",
     height: "64px",
-    width: "500px",
+    width: "600px",
     borderRadius: "16px",
+    justifyContent: "flex-start",
+    padding: "0px 16px",
   },
 });
 
@@ -19,8 +22,8 @@ export const Alerts: React.FC<AlertsProps> = () => {
 
   return (
     <ReuseContainer styling={styles.alertsContainer}>
-      <img src={alertIcon} alt="warning" height={24} />
-      <h5> No Warnings Today</h5>
+      <TriangleAlert color="yellow" />
+      <h5> No Weather Warnings </h5>
     </ReuseContainer>
   );
 };

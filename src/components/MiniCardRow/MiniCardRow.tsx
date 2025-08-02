@@ -6,8 +6,8 @@ import React from "react";
 
 const styling: CSSPropertiesType = () => ({
   miniCardRowContainer: {
-    width: "500px",
-    height: "200px",
+    width: "640px",
+    height: "160px",
     borderRadius: "16px",
     backgroundColor: "rgba(0,0,0,0)",
     columnGap: "8px",

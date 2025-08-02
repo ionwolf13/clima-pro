@@ -38,7 +38,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
   const styles = styling();
   console.log("DATA", forecastData);
   return (
-    <ReuseContainer styling={styles.mainContainer}>
+    <>
       <CurrentDayForecast currentData={forecastData.data[0]} />
       <Alerts />
       <CurrentHourlyForecast hourlyData={hourlyData} />
@@ -74,6 +74,6 @@ export const MainContainer: React.FC<MainContainerProps> = ({
           icon: visibilityIcon,
         }}
       />
-    </ReuseContainer>
+    </>
   );
 };
