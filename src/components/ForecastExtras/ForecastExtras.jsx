@@ -1,5 +1,5 @@
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
-import { Gauge } from "@mui/x-charts/Gauge";
+import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
 import { SparkLineChart } from "@mui/x-charts";
 import { NoBackgroundColor } from "../../shared/constants/colors";
 import { Sunrise, Sunset } from "lucide-react";
@@ -90,6 +90,9 @@ export const ExtraDetailsForecast = ({
               fontSize: 24,
               fontWeight: 800,
             },
+            [`& .${gaugeClasses.valueArc}`]: {
+              fill: "#f48037",
+            },
           }}
         />
       </div>
@@ -114,6 +117,9 @@ export const ExtraDetailsForecast = ({
               fontSize: 24,
               fontWeight: 800,
             },
+            [`& .${gaugeClasses.valueArc}`]: {
+              fill: "#f48037",
+            },
           }}
         />
       </div>
@@ -130,6 +136,9 @@ export const ExtraDetailsForecast = ({
             ["& .MuiGauge-valueText"]: {
               fontSize: 24,
               fontWeight: 800,
+            },
+            [`& .${gaugeClasses.valueArc}`]: {
+              fill: "#f48037",
             },
           }}
         />
