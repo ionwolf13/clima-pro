@@ -5,8 +5,8 @@ import { SparkLineChart } from "@mui/x-charts";
 import dropsIcon from "../../images/drops.webp";
 import sunnyRainIcon from "../../images/sunnyRain.webp";
 import cloudSunnyIcon from "../../images/cloudySunny.webp";
-import { NoBackgroundColor } from "../../shared/constants/colors";
-import { Cloud } from "lucide-react";
+import { NoBackgroundColor, WaterColor } from "../../shared/constants/colors";
+import { Cloud, Droplets, CloudRainWind, CloudLightning } from "lucide-react";
 
 const styling = () => ({
   currentHourlyForecastContainer: {
@@ -65,71 +65,78 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
             borderRadius: "32px",
           }}
         />
-        <span style={{ fontSize: "x-large", color: "white" }}>
+        <span style={{ fontSize: "x-large" }}>
           <strong>Hourly Forecast</strong>
         </span>
       </ReuseContainer>
-      <h4>Mostly cloudy. Lows overnight in the low 80s. </h4>
+      <span style={{ textAlign: "left", width: "100%", marginBottom: "16px" }}>
+        <strong>Mostly cloudy. Lows overnight in the low 80s.</strong>
+      </span>
       <ReuseContainer
         styling={{
           flexDirection: "column",
           overflow: "scroll",
           alignItems: "flex-start",
-          backgroundColor: "rgba(0,0,0,0)",
+          backgroundColor: NoBackgroundColor,
         }}
       >
         <ReuseContainer
           styling={{
-            columnGap: "24px",
+            columnGap: "16px",
             fontSize: "small",
-            backgroundColor: "rgba(0,0,0,0)",
-            width: "1610px",
+            backgroundColor: NoBackgroundColor,
+            width: "2400px",
           }}
         >
           {time.map((times, index) => (
             <ReuseContainer
               styling={{
                 flexDirection: "column",
-                backgroundColor: "rgba(0,0,0,0)",
+                borderRadius: "12px",
+                rowGap: "16px",
+                padding: "16px",
               }}
             >
-              <p style={{ fontSize: "small" }}>
+              <span style={{ fontSize: "small" }}>
                 {times > 12 ? `${times} AM` : `${times} PM`}
-              </p>
-              <img
-                src={index === 0 ? sunnyRainIcon : cloudSunnyIcon}
-                height={16}
-              />
-              <p>{temps[index]} °</p>
+              </span>
+              {index === 0 ? (
+                <CloudRainWind color={WaterColor} />
+              ) : (
+                <CloudLightning color={WaterColor} />
+              )}
+              <span style={{ fontSize: "medium" }}>
+                <strong>{temps[index]}°C </strong>
+              </span>
             </ReuseContainer>
           ))}
         </ReuseContainer>
-        <Box sx={{ width: "1600px", marginLeft: "6px" }}>
+        <Box sx={{ width: "2340px", marginLeft: "32px" }}>
           <SparkLineChart
             data={hourlyTemperatures}
             height={80}
             showHighlight
             showTooltip
-            color={"#f56942"}
-            valueFormatter={(value) => `${value}°`}
+            color={"#1591EA"}
+            valueFormatter={(value) => `${value}°C`}
           />
         </Box>
         <ReuseContainer
           styling={{
             columnGap: "10px",
             fontSize: "small",
-            backgroundColor: "rgba(0,0,0,0)",
-            width: "1600px",
+            backgroundColor: NoBackgroundColor,
+            width: "2400px",
           }}
         >
           {time.map((times, index) => (
             <ReuseContainer
               styling={{
-                backgroundColor: "rgba(0,0,0,0)",
+                backgroundColor: NoBackgroundColor,
               }}
             >
-              <img src={dropsIcon} height={16} />
-              <p> % {dum[index]} </p>
+              <Droplets color={WaterColor} />
+              <span> {dum[index]}%</span>
             </ReuseContainer>
           ))}
         </ReuseContainer>
