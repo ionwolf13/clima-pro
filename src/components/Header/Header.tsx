@@ -1,27 +1,19 @@
 import React from "react";
-import gaiaIcon from "../../images/gaiaIcon.jpeg";
-import starIcon from "../../images/star.webp";
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
-import globalSearchIcon from "../../images/globalSearch.webp";
-import {
-  Cloud,
-  CloudRain,
-  Sun,
-  Zap,
-  Search,
-  MapPin,
-  Heart,
-  HeartPlus,
-  Star,
-} from "lucide-react";
+import { Search, MapPin, Heart, HeartPlus, Star } from "lucide-react";
 import {
   TextField,
   Button,
   InputAdornment,
   MenuItem,
   Select,
-  InputLabel,
+  Tooltip,
 } from "@mui/material";
+import { useLocationStoreActions } from "../../state/selectors/actions";
+import { useLocationStore } from "../../state";
+import { selectTemperatureUnit } from "../../state/selectors/getters";
+import { TemperatureUnitEnum } from "../../shared/Enums/weatherEnums";
+import { changeTemperatureUnit } from "../../shared/utils/utils";
 
 const styling = () => ({
   headerContainer: {
@@ -35,15 +27,20 @@ const styling = () => ({
 });
 
 interface HeaderInterface {
-  forecastData: any;
+  location: string | null;
+  setLocation: (value: string) => void;
 }
 
-export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
+export const Header: React.FC<HeaderInterface> = ({
+  location,
+  setLocation,
+}) => {
   const styles = styling();
 
-  const date = new Date();
+  const { setTemperatureUnit } = useLocationStoreActions();
+  const temperatureUnit = useLocationStore(selectTemperatureUnit);
 
-  const [input, setInput] = React.useState<string>("");
+  const date = new Date();
 
   return (
     <ReuseContainer styling={styles.headerContainer}>
@@ -88,14 +85,16 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
               <p style={{ margin: "0px", fontSize: "large" }}>
                 <strong>Houston, TX </strong>
               </p>
-              <Heart
-                size={20}
-                width={20}
-                height={20}
-                strokeWidth={2.5}
-                color="red"
-                fill="red"
-              />
+              <Tooltip title="Saved">
+                <Heart
+                  size={20}
+                  width={20}
+                  height={20}
+                  strokeWidth={2.5}
+                  color="red"
+                  fill="red"
+                />
+              </Tooltip>
             </ReuseContainer>
             <p style={{ margin: "0px" }}> {date.toLocaleString()} </p>
           </ReuseContainer>
@@ -111,7 +110,7 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
           <TextField
             size="small"
             placeholder="Search location..."
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
             sx={{
               paddingTop: "0px",
               width: "240px",
@@ -140,81 +139,37 @@ export const Header: React.FC<HeaderInterface> = ({ forecastData }) => {
                 opacity: 1, // Optional: Some browsers fade out placeholders, this ensures full opacity
               },
             }}
-            // value={`${forecastData?.city_name}, ${
-            //   forecastData?.state_code || forecastData?.country_code
-            // }`}
-            value={input}
+            value={location}
           />
-          <Button
-            variant="contained"
-            sx={{ minWidth: "auto", padding: "8px", borderRadius: "12px" }}
+          <Tooltip title="Search">
+            <Button
+              variant="contained"
+              sx={{ minWidth: "auto", padding: "8px", borderRadius: "12px" }}
+            >
+              <Search size={24} width={24} height={24} strokeWidth={2.5} />
+            </Button>
+          </Tooltip>
+          <Tooltip
+            title={`Change to ${changeTemperatureUnit(temperatureUnit)}`}
           >
-            <Search size={24} width={24} height={24} strokeWidth={2.5} />
-          </Button>
-          <Button
-            variant="contained"
-            sx={{
-              minWidth: "40px",
-              minHeight: "40px",
-              padding: "0px",
-              backgroundColor: "purple",
-              borderRadius: "12px",
-            }}
-          >
-            <span style={{ fontSize: "20px" }}>C°</span>
-          </Button>
+            <Button
+              variant="contained"
+              sx={{
+                minWidth: "40px",
+                minHeight: "40px",
+                padding: "0px",
+                backgroundColor: "purple",
+                borderRadius: "12px",
+              }}
+              onClick={() =>
+                setTemperatureUnit(changeTemperatureUnit(temperatureUnit))
+              }
+            >
+              <span style={{ fontSize: "20px" }}>{temperatureUnit}</span>
+            </Button>
+          </Tooltip>
         </ReuseContainer>
       </ReuseContainer>
-      {/* <ReuseContainer
-        styling={{
-          backgroundColor: "rgba(0,0,0,0)",
-          justifyContent: "flex-start",
-          // paddingLeft: "32px",
-          columnGap: "8px",
-        }}
-      >
-        <Star color="gold" size={16} />
-        <p> Quick Access: </p>
-        <Button
-          variant="outlined"
-          sx={{
-            minWidth: "auto",
-            padding: "8px",
-            borderRadius: "12px",
-            borderColor: "white",
-            borderWidth: "0.5px",
-            color: "white",
-          }}
-        >
-          Houston, TX
-        </Button>
-        <Button
-          variant="outlined"
-          sx={{
-            minWidth: "auto",
-            padding: "8px",
-            borderRadius: "12px",
-            borderColor: "white",
-            borderWidth: "0.5px",
-            color: "white",
-          }}
-        >
-          Houston, TX
-        </Button>
-        <Button
-          variant="outlined"
-          sx={{
-            minWidth: "auto",
-            padding: "8px",
-            borderRadius: "12px",
-            borderColor: "white",
-            borderWidth: "0.5px",
-            color: "white",
-          }}
-        >
-          Houston, TX
-        </Button>
-      </ReuseContainer> */}
       <ReuseContainer
         styling={{
           backgroundColor: "rgba(0,0,0,0)",

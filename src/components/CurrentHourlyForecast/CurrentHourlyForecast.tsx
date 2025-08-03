@@ -1,12 +1,9 @@
 import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
-import icon from "../../images/statLon.png";
 import Box from "@mui/material/Box";
 import { SparkLineChart } from "@mui/x-charts";
-import dropsIcon from "../../images/drops.webp";
-import sunnyRainIcon from "../../images/sunnyRain.webp";
-import cloudSunnyIcon from "../../images/cloudySunny.webp";
 import { NoBackgroundColor, WaterColor } from "../../shared/constants/colors";
 import { Cloud, Droplets, CloudRainWind, CloudLightning } from "lucide-react";
+import { WeatherDataType } from "../../shared/Types/weatherTypes";
 
 const styling = () => ({
   currentHourlyForecastContainer: {
@@ -22,31 +19,18 @@ const styling = () => ({
 });
 
 interface HourlyForecast {
-  hourlyData: any;
+  hourlyData: WeatherDataType[];
 }
 
 export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
   hourlyData,
 }) => {
   const styles = styling();
-  console.log("HOURLY DATA", hourlyData);
 
-  const hourlyTemperatures = hourlyData.data.map(
-    (dataSet: any) => dataSet.temp
-  );
-  const time = [
+  const times = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     22, 23, 24,
   ];
-  const temps = [
-    78, 55, 92, 63, 81, 50, 99, 71, 59, 88, 67, 95, 52, 74, 85, 60, 91, 57, 83,
-    69, 97, 65, 76, 53,
-  ];
-  const dum = [
-    2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1, 2, 0, 1, 1,
-  ];
-
-  console.log("DATA", hourlyTemperatures, "");
 
   return (
     <ReuseContainer styling={styles.currentHourlyForecastContainer}>
@@ -85,11 +69,12 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
             columnGap: "16px",
             fontSize: "small",
             backgroundColor: NoBackgroundColor,
-            width: "2400px",
+            width: "1600px",
           }}
         >
-          {time.map((times, index) => (
+          {hourlyData.map((dataSet, index) => (
             <ReuseContainer
+              key={`${dataSet.datetime}-hourly-cont`}
               styling={{
                 flexDirection: "column",
                 borderRadius: "12px",
@@ -98,7 +83,9 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
               }}
             >
               <span style={{ fontSize: "small" }}>
-                {times > 12 ? `${times} AM` : `${times} PM`}
+                {times[index] > 12
+                  ? `${times[index]} AM`
+                  : `${times[index]} PM`}
               </span>
               {index === 0 ? (
                 <CloudRainWind color={WaterColor} />
@@ -106,14 +93,14 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
                 <CloudLightning color={WaterColor} />
               )}
               <span style={{ fontSize: "medium" }}>
-                <strong>{temps[index]}°C </strong>
+                <strong>{dataSet.temp}°C </strong>
               </span>
             </ReuseContainer>
           ))}
         </ReuseContainer>
-        <Box sx={{ width: "2340px", marginLeft: "32px" }}>
+        <Box sx={{ width: "1528px", marginLeft: "32px" }}>
           <SparkLineChart
-            data={hourlyTemperatures}
+            data={hourlyData.map((data) => data.temp || 0)}
             height={80}
             showHighlight
             showTooltip
@@ -126,17 +113,19 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
             columnGap: "10px",
             fontSize: "small",
             backgroundColor: NoBackgroundColor,
-            width: "2400px",
+            width: "1600px",
           }}
         >
-          {time.map((times, index) => (
+          {hourlyData.map((dataSet, index) => (
             <ReuseContainer
+              key={`${dataSet.datetime}-precip-cont`}
               styling={{
                 backgroundColor: NoBackgroundColor,
+                columnGap: "4px",
               }}
             >
               <Droplets color={WaterColor} />
-              <span> {dum[index]}%</span>
+              <span> {dataSet.precip?.toFixed(1)} mm</span>
             </ReuseContainer>
           ))}
         </ReuseContainer>
