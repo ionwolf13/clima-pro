@@ -9,26 +9,9 @@ import { forecastData } from "./data/data";
 import axios from "axios";
 
 export const App = () => {
-  const [location, setLocation] = useState("none");
-  const [todaysDate, setTodaysDate] = useState("");
-
-  useEffect(() => {
-    const date = new Date();
-    let day = date.getDay();
-    let month = date.getMonth();
-    let year = date.getFullYear();
-    setTodaysDate(
-      `${WeekDaysEnum[day]}, ${MonthsEnum[month]} ${date.getDate()}, ${year}`
-    );
-  }, []);
+  const [location, setLocation] = useState<string>("");
 
   const [data, setData] = useState(forecastData);
-
-  console.log("INIIA1111", forecastData);
-  // useEffect(() => {
-  //   console.log("INIIAL", forecastData);
-  //   setData(forecastData);
-  // }, [forecastData]);
 
   // useEffect(() => {
   //   axios
@@ -36,7 +19,6 @@ export const App = () => {
   //       `https://api.weatherbit.io/v2.0/forecast/daily?city=${location}&key=${process.env.REACT_APP_API_KEY}`
   //     )
   //     .then((data) => {
-  //       console.log("THIS BE THE DATA", data.data);
   //       setLocationData({
   //         cityName: data.data.city_name,
   //         countryCode: data.data.country_code,
@@ -56,7 +38,6 @@ export const App = () => {
   //       `https://api.weatherbit.io/v2.0/history/hourly?city=${"Houston"}&start_date=2025-02-12&end_date=2025-02-13&&key=fe5a73e5fa9a4032a9655c9efb577197&include=minutely`
   //     )
   //     .then((data) => {
-  //       console.log("THIS BE THE DATA", data.data);
   //       //       setLocationData({
   //       //         cityName: data.data.city_name,
   //       //         countryCode: data.data.country_code,
@@ -70,19 +51,8 @@ export const App = () => {
 
   return (
     <div className="app-container">
-      <Header forecastData={data} />
+      <Header location={location} setLocation={setLocation} />
       <MainContainer forecastData={data} />
-      {/* {!data && (
-        <LocationInput todaysDate={todaysDate} setLocation={setLocation} />
-      )}
-     */}
-      {/* <input
-        value={searchedLocation}
-        onChange={(e) => {
-          console.log(e.target.value);
-          updateSearchedLocation(e.target.value);
-        }}
-      /> */}
       <Footer />
     </div>
   );

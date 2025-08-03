@@ -5,9 +5,13 @@ type GaugePropertyType = React.ComponentProps<typeof Gauge>;
 
 interface ReuseGaugeCardProps {
   data: GaugePropertyType;
+  valueType: string | null;
 }
 
-export const ReuseGaugeCard: React.FC<ReuseGaugeCardProps> = ({ data }) => {
+export const ReuseGaugeCard: React.FC<ReuseGaugeCardProps> = ({
+  data,
+  valueType,
+}) => {
   return (
     <Gauge
       width={data.width ?? 160}
@@ -15,7 +19,7 @@ export const ReuseGaugeCard: React.FC<ReuseGaugeCardProps> = ({ data }) => {
       value={data.value}
       startAngle={data.startAngle ?? -90}
       endAngle={data.endAngle ?? 90}
-      text={({ value }) => `${value} %`}
+      text={({ value }) => `${value} ${valueType || ""}`}
       sx={{
         ["& .MuiGauge-valueText"]: {
           fontSize: 24,

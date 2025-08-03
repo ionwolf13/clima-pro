@@ -1,12 +1,18 @@
 import { create } from "zustand";
 
 export const useLocationStore = create((set) => ({
+  // Initial States
   currentLocation: null,
-  savedLocations: [],
-  temperatureCelsius: true,
-  favoriteLocation: null,
-  isMenuOpen: false,
-  updateLocation: (location) => set(() => ({ location: location })),
-  updateSavedLocations: (locations) =>
-    set(() => ({ savedLocations: locations })),
+  favoriteLocations: [],
+  temperatureUnit: "C°",
+  // Setter functions
+  actions: {
+    setCurrentLocation: (location) => set({ currentLocation: location }),
+    updateFavoriteLocations: (locations) =>
+      set({ favoriteLocations: locations }),
+    setTemperatureUnit: (unit) =>
+      set({
+        temperatureUnit: unit,
+      }),
+  },
 }));

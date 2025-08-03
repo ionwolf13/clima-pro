@@ -1,22 +1,14 @@
 import React from "react";
-import "./MainContainer.css";
 import { CurrentDayForecast } from "../CurrentDayForecast/CurrentDayForecast";
 import { FutureForecast } from "../FutureForecast/FutureForecast";
 import { CurrentHourlyForecast } from "../CurrentHourlyForecast/CurrentHourlyForecast";
 import { ExtraDetailsForecast } from "../ForecastExtras/ForecastExtras";
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
 import { Alerts } from "../Alerts/Alerts";
 import { hourlyData } from "../../data/hourlyData";
-import { MiniCard } from "../MiniCard/MiniCard";
 import { MiniCardRow } from "../MiniCardRow/MiniCardRow";
-import dropPercentIcon from "../../images/dropPercent.webp";
-import sunRaysIcon from "../../images/sunRays.webp";
-import visibilityIcon from "../../images/visibility.webp";
-import windIcon from "../../images/wind.webp";
-import airQualityIcon from "../../images/airQualityIndex.webp";
-import pressureIcon from "../../images/pressure.webp";
 import { Droplet, Sun, Wind, WindArrowDown, Eye, Gauge } from "lucide-react";
 import { NoBackgroundColor } from "../../shared/constants/colors";
+import "./MainContainer.css";
 
 const styling = () => ({
   mainContainer: {
@@ -37,44 +29,60 @@ export const MainContainer: React.FC<MainContainerProps> = ({
   forecastData,
 }) => {
   const styles = styling();
-  console.log("DATA", forecastData);
+
+  const [todaysData, ...hourlyData] = forecastData.data;
+
+  const dataSetOne = [
+    {
+      title: "Air Quality",
+      data: { value: todaysData.aqi },
+      valueType: null,
+      icon: Gauge,
+    },
+    {
+      title: "UV Index",
+      data: { value: todaysData.uv },
+      valueType: null,
+      icon: Sun,
+    },
+    {
+      title: "Humidity",
+      data: { value: todaysData.rh },
+      valueType: "%",
+      icon: Droplet,
+    },
+  ];
+
+  const dataSetTwo = [
+    {
+      title: "Wind",
+      data: { value: todaysData.wind_spd },
+      valueType: "m/s",
+      icon: Wind,
+    },
+    {
+      title: "Pressure",
+      data: { value: todaysData.pres },
+      valueType: "mb",
+      icon: WindArrowDown,
+    },
+    {
+      title: "Visibility",
+      data: { value: todaysData.vis },
+      valueType: "km",
+      icon: Eye,
+    },
+  ];
+
   return (
     <>
-      <CurrentDayForecast currentData={forecastData.data[0]} />
+      <CurrentDayForecast currentData={todaysData} />
       <Alerts />
       <CurrentHourlyForecast hourlyData={hourlyData} />
-      <MiniCardRow
-        dataSetOne={{
-          title: "Air Quality",
-          data: { value: 30 },
-          icon: Gauge,
-        }}
-        dataSetTwo={{
-          title: "UV Index",
-          data: { value: 30 },
-          icon: Sun,
-        }}
-        dataSetThree={{
-          title: "Humidity",
-          data: { value: 30 },
-          icon: Droplet,
-        }}
-      />
-      <FutureForecast futureForecast={forecastData.data.slice(0, 8)} />
+      <MiniCardRow data={dataSetOne} />
+      <FutureForecast futureForecast={hourlyData.slice(0, 8)} />
       <ExtraDetailsForecast />
-      <MiniCardRow
-        dataSetOne={{ title: "Wind", data: { value: 30 }, icon: Wind }}
-        dataSetTwo={{
-          title: "Pressure",
-          data: { value: 30 },
-          icon: WindArrowDown,
-        }}
-        dataSetThree={{
-          title: "Visibility",
-          data: { value: 30 },
-          icon: Eye,
-        }}
-      />
+      <MiniCardRow data={dataSetTwo} />
     </>
   );
 };

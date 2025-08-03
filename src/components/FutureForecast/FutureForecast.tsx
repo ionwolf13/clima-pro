@@ -22,7 +22,7 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
   futureForecast,
 }) => {
   const styles = styling();
-
+  console.log("cast,", futureForecast);
   return (
     <ReuseContainer styling={styles.futureForecastContainer}>
       <ReuseContainer
@@ -55,6 +55,7 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
           const dayNumber = new Date(data.datetime).getDay();
           return (
             <ReuseContainer
+              key={`forecast-${index === 0 ? "Today" : dayNumber}`}
               styling={{
                 borderRadius: "12px",
                 justifyContent: "space-between",
