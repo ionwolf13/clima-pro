@@ -1,8 +1,9 @@
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
+import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import { MiniCard } from "../MiniCard/MiniCard";
 import { CSSPropertiesType } from "../../shared/Types/cssTypes";
 import { ReuseGaugeCard } from "../ReuseGaugeCard/ReuseGaugeCard";
-import { NoBackgroundColor } from "../../shared/constants/colors";
+import { NoBackgroundColor, IconStyle } from "../../shared/constants/css";
+import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
 import React from "react";
 
 const styling: CSSPropertiesType = () => ({
@@ -18,7 +19,7 @@ type MiniCardData = {
   title: string;
   data: { value: number };
   valueType: string | null;
-  icon: any;
+  icon: React.ElementType;
 };
 
 interface MiniCardRowProps {
@@ -34,25 +35,7 @@ export const MiniCardRow: React.FC<MiniCardRowProps> = ({ data }) => {
         const Icon = miniCardData.icon;
         return (
           <MiniCard key={`${miniCardData.title}-`}>
-            <ReuseContainer
-              styling={{
-                backgroundColor: NoBackgroundColor,
-                columnGap: "8px",
-                height: "56px",
-                justifyContent: "center",
-              }}
-            >
-              <Icon
-                style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  padding: "8px",
-                  borderRadius: "32px",
-                }}
-              />
-              <span style={{ fontSize: "x-large" }}>
-                <strong>{miniCardData.title}</strong>
-              </span>
-            </ReuseContainer>
+            <IconTitle icon={Icon} title={miniCardData.title} />
             <ReuseGaugeCard
               data={miniCardData.data}
               valueType={miniCardData.valueType}
