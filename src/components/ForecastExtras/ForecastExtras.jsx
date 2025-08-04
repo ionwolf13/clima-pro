@@ -1,22 +1,18 @@
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
+import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
-import { SparkLineChart } from "@mui/x-charts";
-import { NoBackgroundColor } from "../../shared/constants/colors";
+import { NoBackgroundColor } from "../../shared/constants/css";
 import { Sunrise, Sunset } from "lucide-react";
+import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
 
 const styling = () => ({
   extraDetailsContainer: {
-    width: "640px",
+    width: "600px",
     height: "300px",
     borderRadius: "16px",
   },
 });
 
-export const ExtraDetailsForecast = ({
-  titleOne = "lol",
-  titleTwo = "LOL",
-  titleThree = "Lmfao",
-}) => {
+export const ExtraDetailsForecast = ({}) => {
   const styles = styling();
 
   return (
@@ -37,44 +33,18 @@ export const ExtraDetailsForecast = ({
           alignItems: "flex-start",
         }}
       >
-        <ReuseContainer
-          styling={{
-            backgroundColor: NoBackgroundColor,
-            alignItems: "flex-start",
-            columnGap: "16px",
-          }}
-        >
-          <Sunrise
-            color="#f48037"
-            style={{
-              backgroundColor: "rgba(244, 128, 55, 0.1)",
-              padding: "8px",
-              borderRadius: "32px",
-            }}
-          />
-          <span style={{ marginTop: "10px" }}>
-            <strong>Sunrise</strong>
-          </span>
-        </ReuseContainer>
-        <ReuseContainer
-          styling={{
-            backgroundColor: NoBackgroundColor,
-            alignItems: "flex-start",
-            columnGap: "16px",
-          }}
-        >
-          <span style={{ marginTop: "10px" }}>
-            <strong>Sunset</strong>
-          </span>
-          <Sunset
-            color="#f48037"
-            style={{
-              backgroundColor: "rgba(244, 128, 55, 0.1)",
-              padding: "8px",
-              borderRadius: "32px",
-            }}
-          />
-        </ReuseContainer>
+        <IconTitle
+          icon={Sunrise}
+          title="Sunrise"
+          iconColor="#f48037"
+          position="center"
+        />
+        <IconTitle
+          icon={Sunset}
+          title="Sunset"
+          iconColor="#f48037"
+          position="center"
+        />
       </ReuseContainer>
       <div style={{ position: "absolute", left: "171px", top: "103px" }}>
         <Gauge
@@ -86,10 +56,6 @@ export const ExtraDetailsForecast = ({
           endAngle={90}
           text={({ value }) => `${value} %`}
           sx={{
-            ["& .MuiGauge-valueText"]: {
-              fontSize: 24,
-              fontWeight: 800,
-            },
             [`& .${gaugeClasses.valueArc}`]: {
               fill: "#f48037",
             },
@@ -113,10 +79,6 @@ export const ExtraDetailsForecast = ({
           endAngle={90}
           text={({ value }) => `${value} %`}
           sx={{
-            ["& .MuiGauge-valueText"]: {
-              fontSize: 24,
-              fontWeight: 800,
-            },
             [`& .${gaugeClasses.valueArc}`]: {
               fill: "#f48037",
             },
@@ -133,10 +95,6 @@ export const ExtraDetailsForecast = ({
           endAngle={-180}
           text={({ value }) => `${value} %`}
           sx={{
-            ["& .MuiGauge-valueText"]: {
-              fontSize: 24,
-              fontWeight: 800,
-            },
             [`& .${gaugeClasses.valueArc}`]: {
               fill: "#f48037",
             },

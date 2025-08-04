@@ -1,9 +1,10 @@
 import React from "react";
 import { DaysArray } from "../../shared/constants/dateConstants";
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
+import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import rainDropsIcon from "../../images/rainDrops.webp";
 import { Sun } from "lucide-react";
-import { NoBackgroundColor } from "../../shared/constants/colors";
+import { NoBackgroundColor } from "../../shared/constants/css";
+import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
 import "./FutureForecast.css";
 
 const styling = () => ({
@@ -25,25 +26,7 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
   console.log("cast,", futureForecast);
   return (
     <ReuseContainer styling={styles.futureForecastContainer}>
-      <ReuseContainer
-        styling={{
-          backgroundColor: NoBackgroundColor,
-          columnGap: "16px",
-          justifyContent: "flex-start",
-        }}
-      >
-        <Sun
-          color="white"
-          style={{
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-            padding: "8px",
-            borderRadius: "32px",
-          }}
-        />
-        <span style={{ fontSize: "x-large" }}>
-          <strong>7-Day Outlook</strong>
-        </span>
-      </ReuseContainer>
+      <IconTitle icon={Sun} title={"7-Day Outlook"} />
       <ReuseContainer
         styling={{
           flexDirection: "column",

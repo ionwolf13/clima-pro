@@ -1,5 +1,5 @@
 import React from "react";
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
+import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import { Search, MapPin, Heart, HeartPlus, Star } from "lucide-react";
 import {
   TextField,
@@ -20,6 +20,7 @@ import { changeTemperatureUnit } from "../../shared/utils/utils";
 import { debounce } from "../../shared/utils/utils";
 import { callLocationApi } from "../../shared/apis/locationApi";
 import { GeocodingDataType } from "../../shared/Types/locationTypes";
+import { IconStyle } from "../../shared/constants/css";
 
 const styling = () => ({
   headerContainer: {
@@ -58,7 +59,7 @@ export const Header: React.FC<HeaderInterface> = () => {
     }, 1000),
     [] // Empty dependency array ensures the function is created only once
   );
-
+  console.log("THE LOCATION", location);
   const onChangeSearch = (value: string) => {
     setLocation(value);
     debouncedApiCall(value);
@@ -86,11 +87,7 @@ export const Header: React.FC<HeaderInterface> = () => {
             height={24}
             strokeWidth={2.5}
             color="white"
-            style={{
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              padding: "8px",
-              borderRadius: "32px",
-            }}
+            style={IconStyle}
           />
           <ReuseContainer
             styling={{
@@ -106,29 +103,37 @@ export const Header: React.FC<HeaderInterface> = () => {
             >
               <p style={{ margin: "0px", fontSize: "large" }}>
                 <strong>
-                  {currentLocation?.name}, {currentLocation?.state},
-                  {currentLocation?.country}
+                  {currentLocation
+                    ? `${currentLocation?.name}, ${currentLocation?.state},
+                 $ {currentLocation?.country}`
+                    : " - - - "}
                 </strong>
               </p>
-              <Tooltip title="Saved">
-                {temperatureUnit === "C°" ? (
-                  <Heart
-                    size={20}
-                    width={20}
-                    height={20}
-                    strokeWidth={2.5}
-                    color="red"
-                    fill="red"
-                  />
-                ) : (
-                  <HeartPlus
-                    size={20}
-                    width={20}
-                    height={20}
-                    strokeWidth={2.5}
-                    color="red"
-                  />
-                )}
+              <Tooltip title="Add To Favorites">
+                <Button
+                  variant="text"
+                  color="error"
+                  sx={{ width: "40px", minWidth: "40px", padding: "4px 0px" }}
+                >
+                  {temperatureUnit === "C°" ? (
+                    <Heart
+                      size={20}
+                      width={20}
+                      height={20}
+                      strokeWidth={2.5}
+                      color="red"
+                      fill="red"
+                    />
+                  ) : (
+                    <HeartPlus
+                      size={20}
+                      width={20}
+                      height={20}
+                      strokeWidth={2.5}
+                      color="red"
+                    />
+                  )}
+                </Button>
               </Tooltip>
             </ReuseContainer>
             <p style={{ margin: "0px" }}> {date.toLocaleString()} </p>
@@ -241,7 +246,7 @@ export const Header: React.FC<HeaderInterface> = () => {
           size="small"
           sx={{
             paddingTop: "0px",
-            width: "200px",
+            width: "240px",
             backgroundColor: "rgba(250,250,250,0.2)",
             borderRadius: "12px",
             "& .MuiOutlinedInput-root": {

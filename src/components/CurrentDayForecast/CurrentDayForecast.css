@@ -1,3 +1,12 @@
+.current-day-container {
+  max-width: 600px;
+  border-radius: 16px;
+  padding: 0px 16px;
+  flex-direction: column;
+  row-gap: 16px;
+  padding-top: 16px;
+}
+
 .current-day-data {
   height: 100%;
 }

@@ -1,9 +1,10 @@
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
+import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import Box from "@mui/material/Box";
 import { SparkLineChart } from "@mui/x-charts";
-import { NoBackgroundColor, WaterColor } from "../../shared/constants/colors";
+import { NoBackgroundColor, WaterColor } from "../../shared/constants/css";
 import { Cloud, Droplets, CloudRainWind, CloudLightning } from "lucide-react";
 import { WeatherDataType } from "../../shared/Types/weatherTypes";
+import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
 
 const styling = () => ({
   currentHourlyForecastContainer: {
@@ -34,25 +35,7 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
 
   return (
     <ReuseContainer styling={styles.currentHourlyForecastContainer}>
-      <ReuseContainer
-        styling={{
-          backgroundColor: NoBackgroundColor,
-          justifyContent: "flex-start",
-          columnGap: "16px",
-        }}
-      >
-        <Cloud
-          color="white"
-          style={{
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-            padding: "8px",
-            borderRadius: "32px",
-          }}
-        />
-        <span style={{ fontSize: "x-large" }}>
-          <strong>Hourly Forecast</strong>
-        </span>
-      </ReuseContainer>
+      <IconTitle icon={Cloud} title="Hourly Forecast" />
       <span style={{ textAlign: "left", width: "100%", marginBottom: "16px" }}>
         <strong>Mostly cloudy. Lows overnight in the low 80s.</strong>
       </span>
@@ -98,7 +81,7 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
             </ReuseContainer>
           ))}
         </ReuseContainer>
-        <Box sx={{ width: "1528px", marginLeft: "32px" }}>
+        <Box sx={{ width: "1520px", marginLeft: "40px" }}>
           <SparkLineChart
             data={hourlyData.map((data) => data.temp || 0)}
             height={80}
@@ -110,7 +93,7 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
         </Box>
         <ReuseContainer
           styling={{
-            columnGap: "10px",
+            columnGap: "16px",
             fontSize: "small",
             backgroundColor: NoBackgroundColor,
             width: "1600px",
@@ -120,7 +103,8 @@ export const CurrentHourlyForecast: React.FC<HourlyForecast> = ({
             <ReuseContainer
               key={`${dataSet.datetime}-precip-cont`}
               styling={{
-                backgroundColor: NoBackgroundColor,
+                // backgroundColor: NoBackgroundColor,
+                borderRadius: "12px",
                 columnGap: "4px",
               }}
             >

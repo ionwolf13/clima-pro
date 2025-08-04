@@ -1,28 +1,15 @@
 import React from "react";
-import alertIcon from "../../images/warning.jpeg";
-import { ReuseContainer } from "../../shared/ReuseContainer/ReuseContainer";
-import "./Alerts.css";
+import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
+import { IconStyle } from "../../shared/constants/css";
 import { TriangleAlert } from "lucide-react";
-
-const styling = () => ({
-  alertsContainer: {
-    columnGap: "16px",
-    height: "64px",
-    width: "600px",
-    borderRadius: "16px",
-    justifyContent: "flex-start",
-    padding: "0px 16px",
-  },
-});
+import "./Alerts.css";
 
 interface AlertsProps {}
 
 export const Alerts: React.FC<AlertsProps> = () => {
-  const styles = styling();
-
   return (
-    <ReuseContainer styling={styles.alertsContainer}>
-      <TriangleAlert color="yellow" />
+    <ReuseContainer className="alerts-container">
+      <TriangleAlert color="yellow" style={IconStyle} />
       <h5> No Weather Warnings </h5>
     </ReuseContainer>
   );
