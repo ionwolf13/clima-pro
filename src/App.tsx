@@ -9,8 +9,6 @@ import { forecastData } from "./data/data";
 import axios from "axios";
 
 export const App = () => {
-  const [location, setLocation] = useState<string>("");
-
   const [data, setData] = useState(forecastData);
 
   // useEffect(() => {
@@ -51,7 +49,7 @@ export const App = () => {
 
   return (
     <div className="app-container">
-      <Header location={location} setLocation={setLocation} />
+      <Header />
       <MainContainer forecastData={data} />
       <Footer />
     </div>

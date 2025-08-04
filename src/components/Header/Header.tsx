@@ -8,12 +8,18 @@ import {
   MenuItem,
   Select,
   Tooltip,
+  Autocomplete,
 } from "@mui/material";
 import { useLocationStoreActions } from "../../state/selectors/actions";
 import { useLocationStore } from "../../state";
-import { selectTemperatureUnit } from "../../state/selectors/getters";
-import { TemperatureUnitEnum } from "../../shared/Enums/weatherEnums";
+import {
+  selectCurrentLocation,
+  selectTemperatureUnit,
+} from "../../state/selectors/getters";
 import { changeTemperatureUnit } from "../../shared/utils/utils";
+import { debounce } from "../../shared/utils/utils";
+import { callLocationApi } from "../../shared/apis/locationApi";
+import { GeocodingDataType } from "../../shared/Types/locationTypes";
 
 const styling = () => ({
   headerContainer: {
@@ -26,21 +32,37 @@ const styling = () => ({
   },
 });
 
-interface HeaderInterface {
-  location: string | null;
-  setLocation: (value: string) => void;
-}
+interface HeaderInterface {}
 
-export const Header: React.FC<HeaderInterface> = ({
-  location,
-  setLocation,
-}) => {
+export const Header: React.FC<HeaderInterface> = () => {
   const styles = styling();
 
-  const { setTemperatureUnit } = useLocationStoreActions();
+  // Local states to manage inputs and api calls
+  const [location, setLocation] = React.useState<string>("");
+  const [locationsList, setLocationsList] = React.useState<GeocodingDataType[]>(
+    []
+  );
+  // Global states to manage app data
+  const { setTemperatureUnit, setCurrentLocation } = useLocationStoreActions();
   const temperatureUnit = useLocationStore(selectTemperatureUnit);
+  const currentLocation = useLocationStore(selectCurrentLocation);
 
   const date = new Date();
+
+  const debouncedApiCall = React.useCallback(
+    debounce(async (value: string) => {
+      if (value !== "") {
+        const response = await callLocationApi(value);
+        setLocationsList(response);
+      }
+    }, 1000),
+    [] // Empty dependency array ensures the function is created only once
+  );
+
+  const onChangeSearch = (value: string) => {
+    setLocation(value);
+    debouncedApiCall(value);
+  };
 
   return (
     <ReuseContainer styling={styles.headerContainer}>
@@ -83,17 +105,30 @@ export const Header: React.FC<HeaderInterface> = ({
               }}
             >
               <p style={{ margin: "0px", fontSize: "large" }}>
-                <strong>Houston, TX </strong>
+                <strong>
+                  {currentLocation?.name}, {currentLocation?.state},
+                  {currentLocation?.country}
+                </strong>
               </p>
               <Tooltip title="Saved">
-                <Heart
-                  size={20}
-                  width={20}
-                  height={20}
-                  strokeWidth={2.5}
-                  color="red"
-                  fill="red"
-                />
+                {temperatureUnit === "C°" ? (
+                  <Heart
+                    size={20}
+                    width={20}
+                    height={20}
+                    strokeWidth={2.5}
+                    color="red"
+                    fill="red"
+                  />
+                ) : (
+                  <HeartPlus
+                    size={20}
+                    width={20}
+                    height={20}
+                    strokeWidth={2.5}
+                    color="red"
+                  />
+                )}
               </Tooltip>
             </ReuseContainer>
             <p style={{ margin: "0px" }}> {date.toLocaleString()} </p>
@@ -107,26 +142,47 @@ export const Header: React.FC<HeaderInterface> = ({
             justifyContent: "flex-end",
           }}
         >
-          <TextField
+          <Autocomplete
             size="small"
-            placeholder="Search location..."
-            onChange={(e) => setLocation(e.target.value)}
+            options={locationsList.map(
+              (locationData) =>
+                `${locationData.name}, ${locationData.state}, ${locationData.country}`
+            )}
+            onInputChange={(e, value) => onChangeSearch(value)}
+            renderInput={(params) => (
+              <TextField {...params} label="Search Location..." />
+            )}
+            open={locationsList.length !== 0}
+            onChange={(e, value) => {
+              const splitValue = value?.split(",").map((word) => word.trim());
+
+              if (splitValue !== undefined) {
+                setCurrentLocation(
+                  locationsList.find(
+                    (item) =>
+                      item.name === splitValue[0] &&
+                      item.state === splitValue[1] &&
+                      item.country === splitValue[2]
+                  ) || null
+                );
+              }
+              // After Selecting an Option, Reset the Input and Options back to empty string and array
+              setLocation("");
+              setLocationsList([]);
+            }}
             sx={{
+              width: "300px",
               paddingTop: "0px",
-              width: "240px",
               borderRadius: "12px",
               backgroundColor: "rgba(250,250,250,0.2)",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "12px",
-                // Default border color
                 "& fieldset": {
                   borderColor: "white",
                 },
-                // Hover border color
                 "&:hover fieldset": {
                   borderColor: "white",
                 },
-                // Focused border color
                 "&.Mui-focused fieldset": {
                   borderColor: "white",
                 },
@@ -136,7 +192,7 @@ export const Header: React.FC<HeaderInterface> = ({
               },
               "& .MuiInputBase-input::placeholder": {
                 color: "white",
-                opacity: 1, // Optional: Some browsers fade out placeholders, this ensures full opacity
+                opacity: 1,
               },
             }}
             value={location}
@@ -180,7 +236,7 @@ export const Header: React.FC<HeaderInterface> = ({
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={"Houston, TX"}
+          value={""}
           onChange={() => {}}
           size="small"
           sx={{
@@ -216,9 +272,15 @@ export const Header: React.FC<HeaderInterface> = ({
             </InputAdornment>
           }
         >
-          <MenuItem value={"Houston, TX"}>Houston, TX</MenuItem>
-          <MenuItem value={"Dallas, TX"}>Dallas, TX</MenuItem>
-          <MenuItem value={"Austin, TX"}>Austin, TX</MenuItem>
+          {/* {[].map((locationData) => (
+            <MenuItem
+              value={`${locationData.name}, ${locationData.state}, $
+            {locationData.country}`}
+            >
+              `${locationData.name}, ${locationData.state}, $
+              {locationData.country}`
+            </MenuItem>
+          ))} */}
         </Select>
       </ReuseContainer>
     </ReuseContainer>
