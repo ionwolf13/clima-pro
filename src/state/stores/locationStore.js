@@ -5,7 +5,7 @@ export const useLocationStore = create((set) => ({
   currentLocation: null,
   favoriteLocations: [],
   temperatureUnit: "C°",
-  // Setter functions
+  // Actions
   actions: {
     setCurrentLocation: (location) => set({ currentLocation: location }),
     updateFavoriteLocations: (locations) =>
