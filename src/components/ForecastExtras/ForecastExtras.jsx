@@ -1,50 +1,29 @@
 import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
-import { NoBackgroundColor } from "../../shared/constants/css";
 import { Sunrise, Sunset } from "lucide-react";
 import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
 
-const styling = () => ({
-  extraDetailsContainer: {
-    width: "600px",
-    height: "300px",
-    borderRadius: "16px",
-  },
-});
-
-export const ExtraDetailsForecast = ({}) => {
-  const styles = styling();
-
+export const ExtraDetailsForecast = () => {
   return (
     <ReuseContainer
-      styling={{
-        height: "200px",
-        width: "640px",
-        position: "relative",
-        flexDirection: "column",
-        borderRadius: "16px",
-        justifyContent: "flex-start",
-      }}
+    // styling={{
+    //   height: "200px",
+    //   width: "640px",
+    //   position: "relative",
+    //   flexDirection: "column",
+    //   borderRadius: "16px",
+    //   justifyContent: "flex-start",
+    // }}
     >
       <ReuseContainer
-        styling={{
-          backgroundColor: NoBackgroundColor,
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}
+      // styling={{
+      //   backgroundColor: NoBackgroundColor,
+      //   justifyContent: "center",
+      //   alignItems: "flex-start",
+      // }}
       >
-        <IconTitle
-          icon={Sunrise}
-          title="Sunrise"
-          iconColor="#f48037"
-          position="center"
-        />
-        <IconTitle
-          icon={Sunset}
-          title="Sunset"
-          iconColor="#f48037"
-          position="center"
-        />
+        <IconTitle icon={Sunrise} title="Sunrise" iconColor="#f48037" />
+        <IconTitle icon={Sunset} title="Sunset" iconColor="#f48037" />
       </ReuseContainer>
       <div style={{ position: "absolute", left: "171px", top: "103px" }}>
         <Gauge
@@ -57,8 +36,8 @@ export const ExtraDetailsForecast = ({}) => {
           text={({ value }) => `${value} %`}
           sx={{
             [`& .${gaugeClasses.valueArc}`]: {
-              fill: "#f48037",
-            },
+              fill: "#f48037"
+            }
           }}
         />
       </div>
@@ -67,7 +46,7 @@ export const ExtraDetailsForecast = ({}) => {
           position: "absolute",
           left: "245px",
           zIndex: "1",
-          bottom: "60px",
+          bottom: "60px"
         }}
       >
         <Gauge
@@ -80,8 +59,8 @@ export const ExtraDetailsForecast = ({}) => {
           text={({ value }) => `${value} %`}
           sx={{
             [`& .${gaugeClasses.valueArc}`]: {
-              fill: "#f48037",
-            },
+              fill: "#f48037"
+            }
           }}
         />
       </div>
@@ -96,8 +75,8 @@ export const ExtraDetailsForecast = ({}) => {
           text={({ value }) => `${value} %`}
           sx={{
             [`& .${gaugeClasses.valueArc}`]: {
-              fill: "#f48037",
-            },
+              fill: "#f48037"
+            }
           }}
         />
       </div>

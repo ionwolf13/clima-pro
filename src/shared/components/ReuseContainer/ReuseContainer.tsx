@@ -1,10 +1,19 @@
-import './ReuseContainer.css'
+import "./ReuseContainer.css";
 
-export const ReuseContainer: React.FC<any> = (props) => {
-
-    return (
-        <div className={`reusable-container ${props.className}`} style={{...props.styling}}>
-            {props.children}
-        </div>
-    )
+interface ReuseContainerProps {
+  clearBackground?: boolean;
+  className?: string;
+  children: React.ReactNode;
 }
+
+export const ReuseContainer: React.FC<ReuseContainerProps> = (props) => {
+  return (
+    <div
+      className={`reusable-container ${props.className} ${
+        props.clearBackground ? `clear-background` : ``
+      }`}
+    >
+      {props.children}
+    </div>
+  );
+};

@@ -1,0 +1,37 @@
+.hourly-forecast-container {
+  border-radius: 16px;
+  width: 600px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 8px 16px;
+}
+
+.hourly-chart-flow-container {
+  flex-direction: column;
+  overflow-x: scroll;
+  align-items: flex-start;
+  scrollbar-width: thin;
+}
+.chart-hourly-temperature {
+  column-gap: 16px;
+  font-size: small;
+  width: 1600px;
+}
+
+.chart-hourly-card {
+  flex-direction: column;
+  border-radius: 12px;
+  row-gap: 16px;
+  padding: 16px;
+}
+
+.hourly-data-container {
+  column-gap: 16px;
+  font-size: small;
+  width: 1600px;
+}
+
+.hourly-data-section {
+  border-radius: 12px;
+  column-gap: 4px;
+}

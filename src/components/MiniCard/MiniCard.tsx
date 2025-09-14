@@ -1,16 +1,9 @@
 import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
+import "./MiniCard.css";
 
 export const MiniCard: React.FC<any> = (props) => {
   return (
-    <ReuseContainer
-      styling={{
-        flexDirection: "column",
-        height: "204px",
-        width: "192px",
-        borderRadius: "16px",
-        padding: "0px 16px",
-      }}
-    >
+    <ReuseContainer className="mini-card-container">
       {props.children}
     </ReuseContainer>
   );

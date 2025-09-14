@@ -1,0 +1,21 @@
+.header-container {
+  height: auto;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 16px;
+  flex-direction: column;
+  padding: 16px 16px 16px 16px;
+  gap: 16px;
+}
+
+.header-data-container {
+  width: 100%;
+}
+
+.header-location-container {
+  flex-direction: column;
+}
+
+.header-search-container {
+  max-width: 320px;
+}

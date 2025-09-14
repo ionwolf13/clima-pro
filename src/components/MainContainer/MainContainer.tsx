@@ -1,10 +1,9 @@
 import React from "react";
 import { CurrentDayForecast } from "../CurrentDayForecast/CurrentDayForecast";
 import { FutureForecast } from "../FutureForecast/FutureForecast";
-import { CurrentHourlyForecast } from "../CurrentHourlyForecast/CurrentHourlyForecast";
+import { HourlyForecast } from "../CurrentHourlyForecast/HourlyForecast";
 import { ExtraDetailsForecast } from "../ForecastExtras/ForecastExtras";
 import { Alerts } from "../Alerts/Alerts";
-import { hourlyData } from "../../data/hourlyData";
 import { MiniCardRow } from "../MiniCardRow/MiniCardRow";
 import { Droplet, Sun, Wind, WindArrowDown, Eye, Gauge } from "lucide-react";
 import "./MainContainer.css";
@@ -22,20 +21,20 @@ export const MainContainer: React.FC<MainContainerProps> = React.memo(
         title: "Air Quality",
         data: { value: todaysData.aqi },
         valueType: null,
-        icon: Gauge,
+        icon: Gauge
       },
       {
         title: "UV Index",
         data: { value: todaysData.uv },
         valueType: null,
-        icon: Sun,
+        icon: Sun
       },
       {
         title: "Humidity",
         data: { value: todaysData.rh },
         valueType: "%",
-        icon: Droplet,
-      },
+        icon: Droplet
+      }
     ];
 
     const dataSetTwo = [
@@ -43,31 +42,31 @@ export const MainContainer: React.FC<MainContainerProps> = React.memo(
         title: "Wind",
         data: { value: todaysData.wind_spd },
         valueType: "m/s",
-        icon: Wind,
+        icon: Wind
       },
       {
         title: "Pressure",
         data: { value: todaysData.pres },
         valueType: "mb",
-        icon: WindArrowDown,
+        icon: WindArrowDown
       },
       {
         title: "Visibility",
         data: { value: todaysData.vis },
         valueType: "km",
-        icon: Eye,
-      },
+        icon: Eye
+      }
     ];
 
     return (
       <>
         <CurrentDayForecast currentData={todaysData} />
         <Alerts />
-        <CurrentHourlyForecast hourlyData={hourlyData} />
-        <MiniCardRow data={dataSetOne} />
+        <HourlyForecast hourlyData={hourlyData} />
         <FutureForecast futureForecast={hourlyData.slice(0, 8)} />
-        <ExtraDetailsForecast />
+        <MiniCardRow data={dataSetOne} />
         <MiniCardRow data={dataSetTwo} />
+        <ExtraDetailsForecast />
       </>
     );
   }
