@@ -1,27 +1,33 @@
-.future-forecast-table {
-  display: flex;
+.future-container {
+  width: 600px;
   flex-direction: column;
-  width: 100%;
-  flex-grow: 1;
+  border-radius: 16px;
+  padding: 8px 16px;
 }
 
-.future-forecast-table-row {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-around;
+.future-data-container {
+  flex-direction: column;
+  row-gap: 8px;
 }
 
-.future-forecast-table-row-item {
-  text-align: right;
-  width: 25%;
-  display: flex;
-  justify-content: center;
+.future-row-data {
+  border-radius: 12px;
+  padding: 8px 16px;
+  width: 96%;
+  justify-content: space-between;
 }
 
-#precipitation-column {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
+.future-precipitation-container {
+  width: 32%;
+  justify-content: space-between;
+}
+
+.future-precipitation {
+  width: 50%;
+}
+
+.future-temperature {
+  width: 24%;
+  padding-right: 16px;
+  justify-content: space-between;
 }

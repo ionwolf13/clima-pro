@@ -8,36 +8,25 @@ import {
   MenuItem,
   Select,
   Tooltip,
-  Autocomplete,
+  Autocomplete
 } from "@mui/material";
 import { useLocationStoreActions } from "../../state/selectors/actions";
 import { useLocationStore } from "../../state";
 import {
   selectCurrentLocation,
-  selectTemperatureUnit,
+  selectTemperatureUnit
 } from "../../state/selectors/getters";
 import { changeTemperatureUnit } from "../../shared/utils/utils";
 import { debounce } from "../../shared/utils/utils";
 import { callLocationApi } from "../../shared/apis/locationApi";
 import { GeocodingDataType } from "../../shared/Types/locationTypes";
 import { IconStyle } from "../../shared/constants/css";
-
-const styling = () => ({
-  headerContainer: {
-    height: "auto",
-    maxWidth: "600px",
-    width: "100%",
-    borderRadius: "16px",
-    flexDirection: "column",
-    padding: "0px 16px 16px 16px",
-  },
-});
+import { ReuseText } from "../../shared/components/ReuseText/ReuseText";
+import "./Header.css";
 
 interface HeaderInterface {}
 
 export const Header: React.FC<HeaderInterface> = () => {
-  const styles = styling();
-
   // Local states to manage inputs and api calls
   const [location, setLocation] = React.useState<string>("");
   const [locationsList, setLocationsList] = React.useState<GeocodingDataType[]>(
@@ -66,21 +55,9 @@ export const Header: React.FC<HeaderInterface> = () => {
   };
 
   return (
-    <ReuseContainer styling={styles.headerContainer}>
-      <ReuseContainer
-        styling={{
-          backgroundColor: "rgba(0,0,0,0)",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
-      >
-        <ReuseContainer
-          styling={{
-            backgroundColor: "rgba(0,0,0,0)",
-            height: "64px",
-            maxWidth: "240px",
-          }}
-        >
+    <ReuseContainer className="header-container">
+      <ReuseContainer clearBackground>
+        <ReuseContainer clearBackground>
           <MapPin
             size={24}
             width={24}
@@ -89,26 +66,16 @@ export const Header: React.FC<HeaderInterface> = () => {
             color="white"
             style={IconStyle}
           />
-          <ReuseContainer
-            styling={{
-              backgroundColor: "rgba(0,0,0,0)",
-              flexDirection: "column",
-            }}
-          >
-            <ReuseContainer
-              styling={{
-                backgroundColor: "rgba(0,0,0,0)",
-                columnGap: "8px",
-              }}
-            >
-              <p style={{ margin: "0px", fontSize: "large" }}>
-                <strong>
-                  {currentLocation
+          <ReuseContainer clearBackground className="header-location-container">
+            <ReuseContainer clearBackground>
+              <ReuseText
+                text={`${
+                  currentLocation
                     ? `${currentLocation?.name}, ${currentLocation?.state},
                  $ {currentLocation?.country}`
-                    : " - - - "}
-                </strong>
-              </p>
+                    : " - - - "
+                }`}
+              />
               <Tooltip title="Add To Favorites">
                 <Button
                   variant="text"
@@ -136,17 +103,10 @@ export const Header: React.FC<HeaderInterface> = () => {
                 </Button>
               </Tooltip>
             </ReuseContainer>
-            <p style={{ margin: "0px" }}> {date.toLocaleString()} </p>
+            <ReuseText text={date.toLocaleString()} />
           </ReuseContainer>
         </ReuseContainer>
-        <ReuseContainer
-          styling={{
-            backgroundColor: "rgba(0,0,0,0)",
-            columnGap: "8px",
-            maxWidth: "320px",
-            justifyContent: "flex-end",
-          }}
-        >
+        <ReuseContainer clearBackground className="header-search-container">
           <Autocomplete
             size="small"
             options={locationsList.map(
@@ -183,22 +143,22 @@ export const Header: React.FC<HeaderInterface> = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "12px",
                 "& fieldset": {
-                  borderColor: "white",
+                  borderColor: "white"
                 },
                 "&:hover fieldset": {
-                  borderColor: "white",
+                  borderColor: "white"
                 },
                 "&.Mui-focused fieldset": {
-                  borderColor: "white",
-                },
+                  borderColor: "white"
+                }
               },
               "& .MuiInputBase-input": {
-                color: "white",
+                color: "white"
               },
               "& .MuiInputBase-input::placeholder": {
                 color: "white",
-                opacity: 1,
-              },
+                opacity: 1
+              }
             }}
             value={location}
           />
@@ -220,64 +180,57 @@ export const Header: React.FC<HeaderInterface> = () => {
                 minHeight: "40px",
                 padding: "0px",
                 backgroundColor: "purple",
-                borderRadius: "12px",
+                borderRadius: "12px"
               }}
               onClick={() =>
                 setTemperatureUnit(changeTemperatureUnit(temperatureUnit))
               }
             >
-              <span style={{ fontSize: "20px" }}>{temperatureUnit}</span>
+              <ReuseText text={`${temperatureUnit}`} bold />
             </Button>
           </Tooltip>
         </ReuseContainer>
       </ReuseContainer>
-      <ReuseContainer
-        styling={{
-          backgroundColor: "rgba(0,0,0,0)",
-          justifyContent: "flex-start",
-          columnGap: "8px",
-        }}
-      >
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={""}
-          onChange={() => {}}
-          size="small"
-          sx={{
-            paddingTop: "0px",
-            width: "240px",
-            backgroundColor: "rgba(250,250,250,0.2)",
-            borderRadius: "12px",
-            "& .MuiOutlinedInput-root": {
-              // Default border color
-              "& fieldset": {
-                borderColor: "white",
-              },
-              // Hover border color
-              "&:hover fieldset": {
-                borderColor: "white",
-              },
-              // Focused border color
-              "&.Mui-focused fieldset": {
-                borderColor: "white",
-              },
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={""}
+        onChange={() => {}}
+        size="small"
+        sx={{
+          paddingTop: "0px",
+          width: "240px",
+          backgroundColor: "rgba(250,250,250,0.2)",
+          borderRadius: "12px",
+          "& .MuiOutlinedInput-root": {
+            // Default border color
+            "& fieldset": {
+              borderColor: "white"
             },
-            "& .MuiInputBase-input": {
-              color: "white",
+            // Hover border color
+            "&:hover fieldset": {
+              borderColor: "white"
             },
-            "& .MuiInputBase-input::placeholder": {
-              color: "white",
-              opacity: 1, // Optional: Some browsers fade out placeholders, this ensures full opacity
-            },
-          }}
-          startAdornment={
-            <InputAdornment position="start">
-              <Star color="gold" />
-            </InputAdornment>
+            // Focused border color
+            "&.Mui-focused fieldset": {
+              borderColor: "white"
+            }
+          },
+          "& .MuiInputBase-input": {
+            color: "white"
+          },
+          "& .MuiInputBase-input::placeholder": {
+            color: "white",
+            opacity: 1 // Optional: Some browsers fade out placeholders, this ensures full opacity
           }
-        >
-          {/* {[].map((locationData) => (
+        }}
+        startAdornment={
+          <InputAdornment position="start">
+            <Star color="gold" />
+          </InputAdornment>
+        }
+      >
+        {/* {[].map((locationData) => (
             <MenuItem
               value={`${locationData.name}, ${locationData.state}, $
             {locationData.country}`}
@@ -286,8 +239,7 @@ export const Header: React.FC<HeaderInterface> = () => {
               {locationData.country}`
             </MenuItem>
           ))} */}
-        </Select>
-      </ReuseContainer>
+      </Select>
     </ReuseContainer>
   );
 };

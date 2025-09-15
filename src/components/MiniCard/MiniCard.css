@@ -1,0 +1,5 @@
+.mini-card-container {
+  flex-direction: column;
+  height: 184px;
+  width: 184px;
+}

@@ -3,85 +3,47 @@ import { DaysArray } from "../../shared/constants/dateConstants";
 import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import rainDropsIcon from "../../images/rainDrops.webp";
 import { Sun } from "lucide-react";
-import { NoBackgroundColor } from "../../shared/constants/css";
 import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
+import { ReuseText } from "../../shared/components/ReuseText/ReuseText";
 import "./FutureForecast.css";
 
-const styling = () => ({
-  futureForecastContainer: {
-    width: "600px",
-    flexDirection: "column",
-    borderRadius: "16px",
-    padding: "8px 16px",
-  },
-});
 interface FutureForecastProps {
   futureForecast: any[];
 }
 
 export const FutureForecast: React.FC<FutureForecastProps> = ({
-  futureForecast,
+  futureForecast
 }) => {
-  const styles = styling();
   console.log("cast,", futureForecast);
   return (
-    <ReuseContainer styling={styles.futureForecastContainer}>
+    <ReuseContainer className="future-container">
       <IconTitle icon={Sun} title={"7-Day Outlook"} />
-      <ReuseContainer
-        styling={{
-          flexDirection: "column",
-          backgroundColor: NoBackgroundColor,
-          rowGap: "8px",
-        }}
-      >
+      <ReuseContainer clearBackground className="future-data-container">
         {futureForecast.map((data, index) => {
           const dayNumber = new Date(data.datetime).getDay();
           return (
             <ReuseContainer
               key={`forecast-${index === 0 ? "Today" : dayNumber}`}
-              styling={{
-                borderRadius: "12px",
-                justifyContent: "space-between",
-              }}
+              className="future-row-data"
             >
               <ReuseContainer
-                styling={{
-                  backgroundColor: NoBackgroundColor,
-                  width: "32%",
-                  justifyContent: "space-between",
-                }}
+                clearBackground
+                className="future-precipitation-container"
               >
-                <span style={{ marginLeft: "16px" }}>
-                  <strong>
-                    {index === 0 ? "Today" : DaysArray[dayNumber]}
-                  </strong>
-                </span>
+                <ReuseText
+                  text={index === 0 ? "Today" : DaysArray[dayNumber]}
+                />
                 <ReuseContainer
-                  styling={{
-                    backgroundColor: NoBackgroundColor,
-                    width: "50%",
-                  }}
+                  clearBackground
+                  className="future-precipitation"
                 >
                   <img src={rainDropsIcon} alt="rain" height="24" width={24} />
-                  <span>
-                    <strong>{`${data.pop}  %`}</strong>
-                  </span>
+                  <ReuseText text={`${data.pop}  %`} />
                 </ReuseContainer>
               </ReuseContainer>
-              <ReuseContainer
-                styling={{
-                  backgroundColor: NoBackgroundColor,
-                  width: "24%",
-                  paddingRight: "16px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <span>
-                  <strong>{data.max_temp}°C</strong>
-                </span>
-                <span>
-                  <strong>{data.min_temp}°C</strong>
-                </span>
+              <ReuseContainer className="future-temperature" clearBackground>
+                <ReuseText text={`${data.max_temp}°C`} />
+                <ReuseText text={`${data.min_temp}°C`} />
               </ReuseContainer>
             </ReuseContainer>
           );

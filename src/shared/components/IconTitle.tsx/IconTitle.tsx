@@ -1,5 +1,7 @@
 import { ReuseContainer } from "../ReuseContainer/ReuseContainer";
-import { NoBackgroundColor, IconStyle } from "../../constants/css";
+import { IconStyle } from "../../constants/css";
+import "./IconTitle.css";
+import { ReuseText } from "../ReuseText/ReuseText";
 import React from "react";
 
 interface IconTitleInterface {
@@ -8,32 +10,21 @@ interface IconTitleInterface {
   title?: string;
   titleSize?: string;
   position?: string;
+  bold?: boolean;
 }
 
 export const IconTitle: React.FC<IconTitleInterface> = ({
   icon,
   iconColor = "white",
   title,
-  titleSize = "x-large",
-  position = "flex-start",
+  bold = false
 }) => {
   const Icon = icon;
 
   return (
-    <ReuseContainer
-      styling={{
-        backgroundColor: NoBackgroundColor,
-        columnGap: "8px",
-        height: "40px",
-        justifyContent: position,
-      }}
-    >
+    <ReuseContainer className={`icon-title-container `} clearBackground>
       <Icon color={iconColor} style={IconStyle} />
-      {title && (
-        <span style={{ fontSize: titleSize }}>
-          <strong>{title}</strong>
-        </span>
-      )}
+      {title && <ReuseText text={title} bold={bold} />}
     </ReuseContainer>
   );
 };

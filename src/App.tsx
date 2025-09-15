@@ -2,7 +2,6 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
-import { LocationInput } from "./components/LocationInput/LocationInput";
 import { WeekDaysEnum, MonthsEnum } from "./shared/Enums/dates";
 import { MainContainer } from "./components/MainContainer/MainContainer";
 import { forecastData } from "./data/data";

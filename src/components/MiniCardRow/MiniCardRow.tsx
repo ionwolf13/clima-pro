@@ -1,19 +1,9 @@
+import React from "react";
 import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
 import { MiniCard } from "../MiniCard/MiniCard";
-import { CSSPropertiesType } from "../../shared/Types/cssTypes";
 import { ReuseGaugeCard } from "../ReuseGaugeCard/ReuseGaugeCard";
-import { NoBackgroundColor, IconStyle } from "../../shared/constants/css";
 import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
-import React from "react";
-
-const styling: CSSPropertiesType = () => ({
-  miniCardRowContainer: {
-    width: "640px",
-    borderRadius: "16px",
-    backgroundColor: NoBackgroundColor,
-    columnGap: "8px",
-  },
-});
+import "./MiniCardRow.css";
 
 type MiniCardData = {
   title: string;
@@ -27,15 +17,13 @@ interface MiniCardRowProps {
 }
 
 export const MiniCardRow: React.FC<MiniCardRowProps> = ({ data }) => {
-  const styles = styling();
-
   return (
-    <ReuseContainer styling={styles.miniCardRowContainer}>
+    <ReuseContainer className="mini-card-row-container">
       {data.map((miniCardData) => {
         const Icon = miniCardData.icon;
         return (
-          <MiniCard key={`${miniCardData.title}-`}>
-            <IconTitle icon={Icon} title={miniCardData.title} />
+          <MiniCard key={`${miniCardData.title}`}>
+            <IconTitle icon={Icon} title={miniCardData.title} bold />
             <ReuseGaugeCard
               data={miniCardData.data}
               valueType={miniCardData.valueType}
