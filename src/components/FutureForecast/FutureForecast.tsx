@@ -14,9 +14,8 @@ interface FutureForecastProps {
 export const FutureForecast: React.FC<FutureForecastProps> = ({
   futureForecast
 }) => {
-  console.log("cast,", futureForecast);
   return (
-    <ReuseContainer className="future-container">
+    <ReuseContainer className="future-container" shadow>
       <IconTitle icon={Sun} title={"7-Day Outlook"} />
       <ReuseContainer clearBackground className="future-data-container">
         {futureForecast.map((data, index) => {
@@ -25,6 +24,7 @@ export const FutureForecast: React.FC<FutureForecastProps> = ({
             <ReuseContainer
               key={`forecast-${index === 0 ? "Today" : dayNumber}`}
               className="future-row-data"
+              shadow
             >
               <ReuseContainer
                 clearBackground

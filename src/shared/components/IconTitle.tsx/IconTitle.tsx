@@ -11,20 +11,22 @@ interface IconTitleInterface {
   titleSize?: string;
   position?: string;
   bold?: boolean;
+  shadow?: boolean;
 }
 
-export const IconTitle: React.FC<IconTitleInterface> = ({
-  icon,
-  iconColor = "white",
-  title,
-  bold = false
-}) => {
-  const Icon = icon;
+export const IconTitle: React.FC<IconTitleInterface> = React.memo(
+  ({ icon, iconColor = "white", title, bold = false, shadow = false }) => {
+    const Icon = icon;
 
-  return (
-    <ReuseContainer className={`icon-title-container `} clearBackground>
-      <Icon color={iconColor} style={IconStyle} />
-      {title && <ReuseText text={title} bold={bold} />}
-    </ReuseContainer>
-  );
-};
+    return (
+      <ReuseContainer
+        className={`icon-title-container `}
+        clearBackground
+        shadow={shadow}
+      >
+        <Icon color={iconColor} style={IconStyle} />
+        {title && <ReuseText text={title} bold={bold} />}
+      </ReuseContainer>
+    );
+  }
+);

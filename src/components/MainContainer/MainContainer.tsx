@@ -66,7 +66,6 @@ export const MainContainer: React.FC<MainContainerProps> = React.memo(
         <FutureForecast futureForecast={hourlyData.slice(0, 8)} />
         <MiniCardRow data={dataSetOne} />
         <MiniCardRow data={dataSetTwo} />
-        <ExtraDetailsForecast />
       </>
     );
   }
