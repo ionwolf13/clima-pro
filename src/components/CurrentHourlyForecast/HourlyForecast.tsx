@@ -21,7 +21,7 @@ export const HourlyForecast: React.FC<HourlyForecastInterface> = ({
   ];
 
   return (
-    <ReuseContainer className="hourly-forecast-container">
+    <ReuseContainer className="hourly-forecast-container" shadow>
       <IconTitle icon={Cloud} title="Hourly Forecast" />
       <ReuseText bold text={`Mostly cloudy. Lows overnight in the low 80s.`} />
 
@@ -31,6 +31,7 @@ export const HourlyForecast: React.FC<HourlyForecastInterface> = ({
             <ReuseContainer
               key={`${dataSet.datetime}-hourly-cont`}
               className="chart-hourly-card"
+              shadow
             >
               <ReuseText
                 text={`${
@@ -63,6 +64,7 @@ export const HourlyForecast: React.FC<HourlyForecastInterface> = ({
             <ReuseContainer
               key={`${dataSet.datetime}-precip-cont`}
               className="hourly-data-section"
+              shadow
             >
               <Droplets color={WaterColor} />
               <ReuseText text={`${dataSet.precip?.toFixed(1)} mm`} />

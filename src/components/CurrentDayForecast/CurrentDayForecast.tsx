@@ -27,7 +27,7 @@ export const CurrentDayForecast: React.FC<CurrentDayForecastProps> = ({
     : description;
 
   return (
-    <ReuseContainer className={"current-day-container"}>
+    <ReuseContainer className={"current-day-container"} shadow>
       <IconTitle
         bold
         icon={Thermometer}

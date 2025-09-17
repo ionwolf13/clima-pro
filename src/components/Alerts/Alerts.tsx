@@ -9,7 +9,7 @@ interface AlertsProps {}
 
 export const Alerts: React.FC<AlertsProps> = () => {
   return (
-    <ReuseContainer className="alerts-container">
+    <ReuseContainer className="alerts-container" shadow>
       <TriangleAlert color="yellow" style={IconStyle} />
       <ReuseText text={"No Weather Warnings"} />
     </ReuseContainer>

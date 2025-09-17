@@ -3,7 +3,7 @@ import "./MiniCard.css";
 
 export const MiniCard: React.FC<any> = (props) => {
   return (
-    <ReuseContainer className="mini-card-container">
+    <ReuseContainer className="mini-card-container" shadow>
       {props.children}
     </ReuseContainer>
   );

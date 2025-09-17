@@ -1,4 +1,6 @@
 .mini-card-row-container {
-  width: min-content;
+  justify-content: space-between;
+  max-width: 100%;
+  max-width: 600px;
   background-color: rgba(0, 0, 0, 0);
 }

@@ -45,7 +45,7 @@ export const App = () => {
   //       //         timeZone: data.data.timezone,
   //     });
   // }, []);
-
+  console.log("DATA", data);
   return (
     <div className="app-container">
       <Header />

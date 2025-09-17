@@ -23,14 +23,12 @@ interface ReuseTextInterface {
     | undefined;
 }
 
-export const ReuseText: React.FC<ReuseTextInterface> = ({
-  text,
-  bold,
-  variant = "subtitle1"
-}) => {
-  return (
-    <Typography className={`${bold ? "bold-text" : ""}`} variant={variant}>
-      {text}
-    </Typography>
-  );
-};
+export const ReuseText: React.FC<ReuseTextInterface> = React.memo(
+  ({ text, bold, variant = "subtitle1" }) => {
+    return (
+      <Typography className={`${bold ? "bold-text" : ""}`} variant={variant}>
+        {text}
+      </Typography>
+    );
+  }
+);

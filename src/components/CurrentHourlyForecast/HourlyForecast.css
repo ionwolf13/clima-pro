@@ -3,7 +3,7 @@
   width: 600px;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 8px 16px;
+  padding: 16px 16px;
 }
 
 .hourly-chart-flow-container {
@@ -34,4 +34,5 @@
 .hourly-data-section {
   border-radius: 12px;
   column-gap: 4px;
+  margin-bottom: 8px;
 }

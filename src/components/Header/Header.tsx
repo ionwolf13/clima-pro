@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderInterface> = () => {
   };
 
   return (
-    <ReuseContainer className="header-container">
+    <ReuseContainer className="header-container" shadow>
       <ReuseContainer clearBackground>
         <ReuseContainer clearBackground>
           <MapPin
