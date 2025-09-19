@@ -1,12 +1,18 @@
 import React from "react";
 import { ReuseContainer } from "../../shared/components/ReuseContainer/ReuseContainer";
-import { Search, MapPin, Heart, HeartPlus, Star } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  Heart,
+  HeartPlus
+  // Star
+} from "lucide-react";
 import {
   TextField,
   Button,
-  InputAdornment,
+  // InputAdornment,
   // MenuItem,
-  Select,
+  // Select,
   Tooltip,
   Autocomplete
 } from "@mui/material";
@@ -42,14 +48,18 @@ export const Header: React.FC<HeaderInterface> = () => {
 
   const date = new Date();
 
-  const debouncedApiCall = debounce(async (value: string) => {
-    if (value !== "") {
-      setIsLoading(true);
-      const response = await callLocationApi(value);
-      setLocationsList(response);
-      setIsLoading(false);
-    }
-  }, 1000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedApiCall = React.useCallback(
+    debounce(async (value: string) => {
+      if (value !== "") {
+        setIsLoading(true);
+        const response = await callLocationApi(value);
+        setLocationsList(response);
+        setIsLoading(false);
+      }
+    }, 1000),
+    []
+  );
 
   const debouncedFetchLocationWeather = React.useMemo(
     () =>
@@ -208,7 +218,7 @@ export const Header: React.FC<HeaderInterface> = () => {
           </Tooltip>
         </ReuseContainer>
       </ReuseContainer>
-      <Select
+      {/* <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={""}
@@ -255,8 +265,9 @@ export const Header: React.FC<HeaderInterface> = () => {
               `${locationData.name}, ${locationData.state}, $
               {locationData.country}`
             </MenuItem>
-          ))} */}
-      </Select>
+          ))} 
+      </Select> 
+      */}
     </ReuseContainer>
   );
 };

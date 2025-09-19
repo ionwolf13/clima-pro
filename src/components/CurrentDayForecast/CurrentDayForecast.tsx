@@ -36,7 +36,7 @@ export const CurrentDayForecast: React.FC<CurrentDayForecastProps> = ({
       />
       <ReuseText text={formattedDescription} />
       <ReuseText
-        text={`Feels Like ${averageApparentTemperature}°C • High
+        text={`Feels Like ${averageApparentTemperature.toFixed(0)}°C • High
         ${apparentMaxTemperature}°C • Low ${apparentMinTemperature}°C`}
       />
       <Sun size={100} style={{ margin: "16px" }} color="orange" />
