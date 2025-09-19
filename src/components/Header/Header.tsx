@@ -42,17 +42,14 @@ export const Header: React.FC<HeaderInterface> = () => {
 
   const date = new Date();
 
-  const debouncedApiCall = React.useCallback(
-    debounce(async (value: string) => {
-      if (value !== "") {
-        setIsLoading(true);
-        const response = await callLocationApi(value);
-        setLocationsList(response);
-        setIsLoading(false);
-      }
-    }, 1000),
-    [] // Empty dependency array ensures the function is created only once
-  );
+  const debouncedApiCall = debounce(async (value: string) => {
+    if (value !== "") {
+      setIsLoading(true);
+      const response = await callLocationApi(value);
+      setLocationsList(response);
+      setIsLoading(false);
+    }
+  }, 1000);
 
   const debouncedFetchLocationWeather = React.useMemo(
     () =>

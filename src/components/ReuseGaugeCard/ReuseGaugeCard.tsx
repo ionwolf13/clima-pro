@@ -23,12 +23,6 @@ export const ReuseGaugeCard: React.FC<ReuseGaugeCardProps> = ({
       startAngle={data.startAngle ?? -90}
       endAngle={data.endAngle ?? 90}
       text={({ value }) => `${value} ${valueType || ""}`}
-      sx={{
-        ["& .MuiGauge-valueText"]: {
-          fontSize: 24,
-          fontWeight: 800
-        }
-      }}
     />
   );
 };
