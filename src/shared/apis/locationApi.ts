@@ -10,8 +10,8 @@ export const callLocationApi = async (location: string) => {
         method: "GET",
         headers: {
           Accept: "application/json",
-          "X-Api-Key": "Sn2+aBNhckb6tTAEV/a6/Q==dWWmKxsmVUmQ3DjS",
-        },
+          "X-Api-Key": `${process.env.REACT_APP_LOCATION_API_KEY}`
+        }
       }
     );
     if (!response.ok) throw new Error("Failed to obtain locations.");
