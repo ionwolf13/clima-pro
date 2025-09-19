@@ -14,6 +14,7 @@
 
 .header-location-container {
   flex-direction: column;
+  gap: 0px;
 }
 
 .header-search-container {

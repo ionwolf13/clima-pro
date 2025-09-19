@@ -2,71 +2,74 @@ import React from "react";
 import { CurrentDayForecast } from "../CurrentDayForecast/CurrentDayForecast";
 import { FutureForecast } from "../FutureForecast/FutureForecast";
 import { HourlyForecast } from "../CurrentHourlyForecast/HourlyForecast";
-import { ExtraDetailsForecast } from "../ForecastExtras/ForecastExtras";
 import { Alerts } from "../Alerts/Alerts";
 import { MiniCardRow } from "../MiniCardRow/MiniCardRow";
 import { Droplet, Sun, Wind, WindArrowDown, Eye, Gauge } from "lucide-react";
+import { useLocationStore } from "../../state";
+import { selectCurrentWeather } from "../../state/selectors/getters";
 import "./MainContainer.css";
 
-interface MainContainerProps {
-  forecastData: any;
-}
+interface MainContainerProps {}
 
-export const MainContainer: React.FC<MainContainerProps> = React.memo(
-  ({ forecastData }) => {
-    const [todaysData, ...hourlyData] = forecastData.data;
+export const MainContainer: React.FC<MainContainerProps> = React.memo(() => {
+  const currentWeather = useLocationStore(selectCurrentWeather);
 
-    const dataSetOne = [
-      {
-        title: "Air Quality",
-        data: { value: todaysData.aqi },
-        valueType: null,
-        icon: Gauge
-      },
-      {
-        title: "UV Index",
-        data: { value: todaysData.uv },
-        valueType: null,
-        icon: Sun
-      },
-      {
-        title: "Humidity",
-        data: { value: todaysData.rh },
-        valueType: "%",
-        icon: Droplet
-      }
-    ];
+  const [todaysData, ...hourlyData] = currentWeather.data;
 
-    const dataSetTwo = [
-      {
-        title: "Wind",
-        data: { value: todaysData.wind_spd },
-        valueType: "m/s",
-        icon: Wind
-      },
-      {
-        title: "Pressure",
-        data: { value: todaysData.pres },
-        valueType: "mb",
-        icon: WindArrowDown
-      },
-      {
-        title: "Visibility",
-        data: { value: todaysData.vis },
-        valueType: "km",
-        icon: Eye
-      }
-    ];
+  const dataSetOne = [
+    {
+      title: "Dewpoint",
+      data: { value: todaysData.dewpt },
+      valueType: null,
+      icon: Gauge
+    },
+    {
+      title: "UV Index",
+      data: { value: todaysData.uv },
+      valueType: null,
+      icon: Sun,
+      maxValue: 11
+    },
+    {
+      title: "Humidity",
+      data: { value: todaysData.rh },
+      valueType: "%",
+      icon: Droplet
+    }
+  ];
 
-    return (
-      <>
-        <CurrentDayForecast currentData={todaysData} />
-        <Alerts />
-        <HourlyForecast hourlyData={hourlyData} />
-        <FutureForecast futureForecast={hourlyData.slice(0, 8)} />
-        <MiniCardRow data={dataSetOne} />
-        <MiniCardRow data={dataSetTwo} />
-      </>
-    );
-  }
-);
+  const dataSetTwo = [
+    {
+      title: "Wind Speed",
+      data: { value: todaysData.wind_spd },
+      valueType: "m/s",
+      icon: Wind,
+      maxValue: 253
+    },
+    {
+      title: "Pressure",
+      data: { value: todaysData.pres },
+      valueType: "mb",
+      icon: WindArrowDown,
+      maxValue: 1084
+    },
+    {
+      title: "Visibility",
+      data: { value: todaysData.vis },
+      valueType: "km",
+      icon: Eye,
+      maxValue: 296
+    }
+  ];
+
+  return (
+    <>
+      <CurrentDayForecast currentData={todaysData} />
+      <Alerts />
+      <HourlyForecast hourlyData={hourlyData} />
+      <FutureForecast futureForecast={hourlyData.slice(0, 8)} />
+      <MiniCardRow data={dataSetOne} />
+      <MiniCardRow data={dataSetTwo} />
+    </>
+  );
+});

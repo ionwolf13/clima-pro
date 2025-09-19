@@ -10,6 +10,7 @@ type MiniCardData = {
   data: { value: number };
   valueType: string | null;
   icon: React.ElementType;
+  maxValue?: number;
 };
 
 interface MiniCardRowProps {
@@ -27,6 +28,7 @@ export const MiniCardRow: React.FC<MiniCardRowProps> = ({ data }) => {
             <ReuseGaugeCard
               data={miniCardData.data}
               valueType={miniCardData.valueType}
+              maxValue={miniCardData.maxValue}
             />
           </MiniCard>
         );

@@ -3,13 +3,13 @@ import Box from "@mui/material/Box";
 import { SparkLineChart } from "@mui/x-charts";
 import { WaterColor } from "../../shared/constants/css";
 import { Cloud, Droplets, CloudRainWind, CloudLightning } from "lucide-react";
-import { WeatherDataType } from "../../shared/Types/weatherTypes";
+import { DailyForecastType } from "../../shared/Types/weatherTypes";
 import { IconTitle } from "../../shared/components/IconTitle.tsx/IconTitle";
 import { ReuseText } from "../../shared/components/ReuseText/ReuseText";
 import "./HourlyForecast.css";
 
 interface HourlyForecastInterface {
-  hourlyData: WeatherDataType[];
+  hourlyData: DailyForecastType[];
 }
 
 export const HourlyForecast: React.FC<HourlyForecastInterface> = ({
