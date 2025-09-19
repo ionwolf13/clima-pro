@@ -1,15 +1,9 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
-import { WeekDaysEnum, MonthsEnum } from "./shared/Enums/dates";
 import { MainContainer } from "./components/MainContainer/MainContainer";
-import { forecastData } from "./data/data";
-import axios from "axios";
 
 export const App = () => {
-  const [data, setData] = useState(forecastData);
-
   // useEffect(() => {
   //   axios
   //     .get(
@@ -45,11 +39,11 @@ export const App = () => {
   //       //         timeZone: data.data.timezone,
   //     });
   // }, []);
-  console.log("DATA", data);
+
   return (
     <div className="app-container">
       <Header />
-      <MainContainer forecastData={data} />
+      <MainContainer />
       <Footer />
     </div>
   );

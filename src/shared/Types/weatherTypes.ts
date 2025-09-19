@@ -2,7 +2,7 @@ import { TemperatureUnitEnum } from "../Enums/weatherEnums";
 
 export type TemperatureUnitType = `${TemperatureUnitEnum}`;
 
-export type WeatherDataType = {
+export type DailyForecastType = {
   app_max_temp: number | null;
   app_min_temp: number | null;
   clouds: number | null;
@@ -45,4 +45,14 @@ export type WeatherDataType = {
   wind_dir: number | null;
   wind_gust_spd: number | null;
   wind_spd: number | null;
+};
+
+export type WeatherResponseType = {
+  city_name: string;
+  country_code: string;
+  lat: number;
+  lon: number;
+  state_code: string;
+  timezone: string;
+  data: DailyForecastType[];
 };

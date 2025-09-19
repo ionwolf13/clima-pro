@@ -32,8 +32,11 @@ export const Header: React.FC<HeaderInterface> = () => {
   const [locationsList, setLocationsList] = React.useState<GeocodingDataType[]>(
     []
   );
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
   // Global states to manage app data
-  const { setTemperatureUnit, setCurrentLocation } = useLocationStoreActions();
+  const { setTemperatureUnit, setCurrentLocation, fetchLocationWeather } =
+    useLocationStoreActions();
   const temperatureUnit = useLocationStore(selectTemperatureUnit);
   const currentLocation = useLocationStore(selectCurrentLocation);
 
@@ -42,13 +45,31 @@ export const Header: React.FC<HeaderInterface> = () => {
   const debouncedApiCall = React.useCallback(
     debounce(async (value: string) => {
       if (value !== "") {
+        setIsLoading(true);
         const response = await callLocationApi(value);
         setLocationsList(response);
+        setIsLoading(false);
       }
     }, 1000),
     [] // Empty dependency array ensures the function is created only once
   );
-  console.log("THE LOCATION", location);
+
+  const debouncedFetchLocationWeather = React.useMemo(
+    () =>
+      debounce(async () => {
+        await fetchLocationWeather();
+      }, 1000),
+    [fetchLocationWeather]
+  );
+
+  const debouncedSetTemperatureUnit = React.useMemo(
+    () =>
+      debounce(async () => {
+        await setTemperatureUnit(changeTemperatureUnit(temperatureUnit));
+      }, 300),
+    [setTemperatureUnit, temperatureUnit]
+  );
+
   const onChangeSearch = (value: string) => {
     setLocation(value);
     debouncedApiCall(value);
@@ -72,7 +93,7 @@ export const Header: React.FC<HeaderInterface> = () => {
                 text={`${
                   currentLocation
                     ? `${currentLocation?.name}, ${currentLocation?.state},
-                 $ {currentLocation?.country}`
+                 ${currentLocation?.country}`
                     : " - - - "
                 }`}
               />
@@ -109,27 +130,27 @@ export const Header: React.FC<HeaderInterface> = () => {
         <ReuseContainer clearBackground className="header-search-container">
           <Autocomplete
             size="small"
+            loading={isLoading}
             options={locationsList.map(
               (locationData) =>
                 `${locationData.name}, ${locationData.state}, ${locationData.country}`
             )}
             onInputChange={(e, value) => onChangeSearch(value)}
             renderInput={(params) => (
-              <TextField {...params} label="Search Location..." />
+              <TextField {...params} label="Search City, State" />
             )}
-            open={locationsList.length !== 0}
+            open={locationsList.length !== 0 || isLoading}
             onChange={(e, value) => {
               const splitValue = value?.split(",").map((word) => word.trim());
-
+              console.log("CLICK");
               if (splitValue !== undefined) {
-                setCurrentLocation(
-                  locationsList.find(
-                    (item) =>
-                      item.name === splitValue[0] &&
-                      item.state === splitValue[1] &&
-                      item.country === splitValue[2]
-                  ) || null
+                const foundLocation = locationsList.find(
+                  (item) =>
+                    item.name === splitValue[0] &&
+                    item.state === splitValue[1] &&
+                    item.country === splitValue[2]
                 );
+                setCurrentLocation(foundLocation || null);
               }
               // After Selecting an Option, Reset the Input and Options back to empty string and array
               setLocation("");
@@ -162,10 +183,11 @@ export const Header: React.FC<HeaderInterface> = () => {
             }}
             value={location}
           />
-          <Tooltip title="Search">
+          <Tooltip title="Search Weather Details">
             <Button
               variant="contained"
               sx={{ minWidth: "auto", padding: "8px", borderRadius: "12px" }}
+              onClick={debouncedFetchLocationWeather}
             >
               <Search size={24} width={24} height={24} strokeWidth={2.5} />
             </Button>
@@ -182,9 +204,7 @@ export const Header: React.FC<HeaderInterface> = () => {
                 backgroundColor: "purple",
                 borderRadius: "12px"
               }}
-              onClick={() =>
-                setTemperatureUnit(changeTemperatureUnit(temperatureUnit))
-              }
+              onClick={debouncedSetTemperatureUnit}
             >
               <ReuseText text={`${temperatureUnit}`} bold />
             </Button>
