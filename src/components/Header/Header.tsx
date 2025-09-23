@@ -39,6 +39,7 @@ export const Header: React.FC<HeaderInterface> = () => {
     []
   );
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isDataSearched, setIsDataSearched] = React.useState<boolean>(false);
 
   // Global states to manage app data
   const { setTemperatureUnit, setCurrentLocation, fetchLocationWeather } =
@@ -49,15 +50,16 @@ export const Header: React.FC<HeaderInterface> = () => {
   const date = new Date();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedApiCall = React.useCallback(
-    debounce(async (value: string) => {
-      if (value !== "") {
-        setIsLoading(true);
-        const response = await callLocationApi(value);
-        setLocationsList(response);
-        setIsLoading(false);
-      }
-    }, 1000),
+  const debouncedApiCall = React.useMemo(
+    () =>
+      debounce(async (value: string) => {
+        if (value !== "") {
+          setIsLoading(true);
+          const response = await callLocationApi(value);
+          setLocationsList(response);
+          setIsLoading(false);
+        }
+      }, 1000),
     []
   );
 
@@ -65,6 +67,7 @@ export const Header: React.FC<HeaderInterface> = () => {
     () =>
       debounce(async () => {
         await fetchLocationWeather();
+        setIsDataSearched(false);
       }, 1000),
     [fetchLocationWeather]
   );
@@ -77,10 +80,18 @@ export const Header: React.FC<HeaderInterface> = () => {
     [setTemperatureUnit, temperatureUnit]
   );
 
-  const onChangeSearch = (value: string) => {
+  const onChangeSearch = (_: any, value: string) => {
     setLocation(value);
     debouncedApiCall(value);
   };
+
+  const locationOptions = React.useMemo(
+    () =>
+      locationsList.map(
+        (location) => `${location.name}, ${location.state}, ${location.country}`
+      ),
+    [locationsList]
+  );
 
   return (
     <ReuseContainer className="header-container" shadow>
@@ -138,18 +149,14 @@ export const Header: React.FC<HeaderInterface> = () => {
           <Autocomplete
             size="small"
             loading={isLoading}
-            options={locationsList.map(
-              (locationData) =>
-                `${locationData.name}, ${locationData.state}, ${locationData.country}`
-            )}
-            onInputChange={(e, value) => onChangeSearch(value)}
+            options={locationOptions}
+            onInputChange={onChangeSearch}
             renderInput={(params) => (
               <TextField {...params} label="Search City, State" />
             )}
             open={locationsList.length !== 0 || isLoading}
             onChange={(e, value) => {
               const splitValue = value?.split(",").map((word) => word.trim());
-              console.log("CLICK");
               if (splitValue !== undefined) {
                 const foundLocation = locationsList.find(
                   (item) =>
@@ -157,6 +164,7 @@ export const Header: React.FC<HeaderInterface> = () => {
                     item.state === splitValue[1] &&
                     item.country === splitValue[2]
                 );
+                setIsDataSearched(true);
                 setCurrentLocation(foundLocation || null);
               }
               // After Selecting an Option, Reset the Input and Options back to empty string and array
@@ -195,6 +203,9 @@ export const Header: React.FC<HeaderInterface> = () => {
               variant="contained"
               sx={{ minWidth: "auto", padding: "8px", borderRadius: "12px" }}
               onClick={debouncedFetchLocationWeather}
+              className={`${
+                currentLocation && isDataSearched ? "pulse-ani" : undefined
+              }`}
             >
               <Search size={24} width={24} height={24} strokeWidth={2.5} />
             </Button>
