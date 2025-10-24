@@ -38,13 +38,13 @@ export const useLocationStore = create<LocationState>((set, get) => ({
       }),
     fetchLocationWeather: async () => {
       const { currentLocation } = get();
-
+      console.log("current", currentLocation);
       if (!currentLocation) return;
-      const locationName = `${currentLocation.name}, ${currentLocation.state}`;
       set({ isLoadingWeather: true });
+      
+
       const weatherData = await callWeatherApi(
-        locationName,
-        currentLocation.country || ""
+        currentLocation
       );
       set({ currentWeather: weatherData, isLoadingWeather: false });
     }
