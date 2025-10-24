@@ -1,0 +1,7 @@
+.welcome-container {
+  flex-direction: column;
+  height: auto;
+  max-width: 600px;
+  width: 100%;
+  padding: 16px;
+}
