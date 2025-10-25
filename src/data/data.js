@@ -38,13 +38,13 @@ export const forecastData = {
       weather: {
         icon: "t03d",
         code: 202,
-        description: "Thunderstorm with heavy rain"
+        description: "Thunderstorm with heavy rain",
       },
       wind_cdir: "SSW",
       wind_cdir_full: "south-southwest",
       wind_dir: 211,
       wind_gust_spd: 6.7,
-      wind_spd: 4.1
+      wind_spd: 4.1,
     },
     {
       app_max_temp: 13,
@@ -82,13 +82,13 @@ export const forecastData = {
       weather: {
         icon: "c03d",
         code: 803,
-        description: "Broken clouds"
+        description: "Broken clouds",
       },
       wind_cdir: "NNE",
       wind_cdir_full: "north-northeast",
       wind_dir: 19,
       wind_gust_spd: 8.8,
-      wind_spd: 5.4
+      wind_spd: 5.4,
     },
     {
       app_max_temp: 17.4,
@@ -126,13 +126,13 @@ export const forecastData = {
       weather: {
         icon: "r04d",
         code: 520,
-        description: "Light shower rain"
+        description: "Light shower rain",
       },
       wind_cdir: "ENE",
       wind_cdir_full: "east-northeast",
       wind_dir: 77,
       wind_gust_spd: 6.3,
-      wind_spd: 3.8
+      wind_spd: 3.8,
     },
     {
       app_max_temp: 24.9,
@@ -170,13 +170,13 @@ export const forecastData = {
       weather: {
         icon: "t02d",
         code: 201,
-        description: "Thunderstorm with rain"
+        description: "Thunderstorm with rain",
       },
       wind_cdir: "SSW",
       wind_cdir_full: "south-southwest",
       wind_dir: 208,
       wind_gust_spd: 9.3,
-      wind_spd: 5.3
+      wind_spd: 5.3,
     },
     {
       app_max_temp: 16.3,
@@ -214,13 +214,13 @@ export const forecastData = {
       weather: {
         icon: "c02d",
         code: 801,
-        description: "Few clouds"
+        description: "Few clouds",
       },
       wind_cdir: "NW",
       wind_cdir_full: "northwest",
       wind_dir: 312,
       wind_gust_spd: 9.6,
-      wind_spd: 5.9
+      wind_spd: 5.9,
     },
     {
       app_max_temp: 15.7,
@@ -258,13 +258,13 @@ export const forecastData = {
       weather: {
         icon: "c02d",
         code: 801,
-        description: "Few clouds"
+        description: "Few clouds",
       },
       wind_cdir: "ENE",
       wind_cdir_full: "east-northeast",
       wind_dir: 71,
       wind_gust_spd: 5.2,
-      wind_spd: 3.3
+      wind_spd: 3.3,
     },
     {
       app_max_temp: 18.9,
@@ -302,13 +302,13 @@ export const forecastData = {
       weather: {
         icon: "r03d",
         code: 502,
-        description: "Heavy rain"
+        description: "Heavy rain",
       },
       wind_cdir: "E",
       wind_cdir_full: "east",
       wind_dir: 98,
       wind_gust_spd: 7.8,
-      wind_spd: 3
+      wind_spd: 3,
     },
     {
       app_max_temp: 14.6,
@@ -346,13 +346,13 @@ export const forecastData = {
       weather: {
         icon: "r03d",
         code: 502,
-        description: "Heavy rain"
+        description: "Heavy rain",
       },
       wind_cdir: "S",
       wind_cdir_full: "south",
       wind_dir: 183,
       wind_gust_spd: 12,
-      wind_spd: 6.2
+      wind_spd: 6.2,
     },
     {
       app_max_temp: 7.8,
@@ -390,13 +390,13 @@ export const forecastData = {
       weather: {
         icon: "c03d",
         code: 803,
-        description: "Broken clouds"
+        description: "Broken clouds",
       },
       wind_cdir: "SSW",
       wind_cdir_full: "south-southwest",
       wind_dir: 197,
       wind_gust_spd: 7.9,
-      wind_spd: 4.8
+      wind_spd: 4.8,
     },
     {
       app_max_temp: 9,
@@ -434,13 +434,13 @@ export const forecastData = {
       weather: {
         icon: "c04d",
         code: 804,
-        description: "Overcast clouds"
+        description: "Overcast clouds",
       },
       wind_cdir: "ENE",
       wind_cdir_full: "east-northeast",
       wind_dir: 75,
       wind_gust_spd: 6.3,
-      wind_spd: 3.7
+      wind_spd: 3.7,
     },
     {
       app_max_temp: 10,
@@ -478,13 +478,13 @@ export const forecastData = {
       weather: {
         icon: "r01d",
         code: 500,
-        description: "Light rain"
+        description: "Light rain",
       },
       wind_cdir: "ENE",
       wind_cdir_full: "east-northeast",
       wind_dir: 64,
       wind_gust_spd: 9.1,
-      wind_spd: 3.5
+      wind_spd: 3.5,
     },
     {
       app_max_temp: 16.6,
@@ -522,13 +522,13 @@ export const forecastData = {
       weather: {
         icon: "c03d",
         code: 803,
-        description: "Broken clouds"
+        description: "Broken clouds",
       },
       wind_cdir: "E",
       wind_cdir_full: "east",
       wind_dir: 92,
       wind_gust_spd: 3.2,
-      wind_spd: 1.8
+      wind_spd: 1.8,
     },
     {
       app_max_temp: 19.7,
@@ -566,13 +566,13 @@ export const forecastData = {
       weather: {
         icon: "c02d",
         code: 801,
-        description: "Few clouds"
+        description: "Few clouds",
       },
       wind_cdir: "SE",
       wind_cdir_full: "southeast",
       wind_dir: 131,
       wind_gust_spd: 4.3,
-      wind_spd: 3.2
+      wind_spd: 3.2,
     },
     {
       app_max_temp: 21.9,
@@ -610,13 +610,13 @@ export const forecastData = {
       weather: {
         icon: "c02d",
         code: 801,
-        description: "Few clouds"
+        description: "Few clouds",
       },
       wind_cdir: "S",
       wind_cdir_full: "south",
       wind_dir: 178,
       wind_gust_spd: 6.6,
-      wind_spd: 3.2
+      wind_spd: 3.2,
     },
     {
       app_max_temp: 22.7,
@@ -654,13 +654,13 @@ export const forecastData = {
       weather: {
         icon: "c03d",
         code: 803,
-        description: "Broken clouds"
+        description: "Broken clouds",
       },
       wind_cdir: "S",
       wind_cdir_full: "south",
       wind_dir: 170,
       wind_gust_spd: 8.6,
-      wind_spd: 3.5
+      wind_spd: 3.5,
     },
     {
       app_max_temp: 22.9,
@@ -698,19 +698,19 @@ export const forecastData = {
       weather: {
         icon: "c03d",
         code: 803,
-        description: "Broken clouds"
+        description: "Broken clouds",
       },
       wind_cdir: "SSE",
       wind_cdir_full: "south-southeast",
       wind_dir: 166,
       wind_gust_spd: 5.7,
-      wind_spd: 2.9
-    }
+      wind_spd: 2.9,
+    },
   ],
   lat: "29.76328",
   lon: "-95.36327",
   state_code: "TX",
-  timezone: "America/Chicago"
+  timezone: "America/Chicago",
 };
 
 export const emptyDailyForecast = {
@@ -748,14 +748,14 @@ export const emptyDailyForecast = {
   vis: 0,
   weather: {
     icon: "",
-    code: 0,
-    description: ""
+    code: 800,
+    description: "",
   },
   wind_cdir: "",
   wind_cdir_full: "",
   wind_dir: 0,
   wind_gust_spd: 0,
-  wind_spd: 0
+  wind_spd: 0,
 };
 
 export const emptyWeatherResponse = {
@@ -765,5 +765,5 @@ export const emptyWeatherResponse = {
   lon: 0,
   state_code: "",
   timezone: "",
-  data: [emptyDailyForecast] // could also be [] depending on how you want to init
+  data: [emptyDailyForecast], // could also be [] depending on how you want to init
 };

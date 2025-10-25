@@ -56,3 +56,15 @@ export type WeatherResponseType = {
   timezone: string;
   data: DailyForecastType[];
 };
+
+export interface WeatherIcon {
+  day: string;
+  night: string;
+}
+
+export interface WeatherDetail {
+  description: string;
+  icons: WeatherIcon;
+}
+
+export type WeatherDictionary = Record<number, WeatherDetail>;
